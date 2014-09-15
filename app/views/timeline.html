@@ -1,0 +1,142 @@
+<div class="row">
+	<div class="row">
+		<div class="btn btn-default delBtn">Refresh</div>
+		<div class="btn btn-primary saveBtn">Update</div>
+		<div class="btn btn-danger delBtn">Delete</div>
+		<div class="btn btn-primary saveBtn">Insert</div>
+	</div>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row">
+					<div class="row">
+						<div class="col-md-6">
+						 <!-- Timeline status goes here-->
+						 </div>
+					</div>
+					<div class="col-md-6 topContainer">
+						<div class="previewContainer">
+							<div class="full">
+								<div class="scalable">
+									<!-- Timeline content goes here -->
+								</div>
+							</div>
+					    </div>
+					</div>
+					<div class="col-md-6 sourceContainer codeEditor">
+						<div class="tabbable">
+							<ul class="nav nav-tabs">
+								<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">
+									<a ng-click="select(pane)"></a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane" ng-class="{active:selected}">
+									<div class="sourceBox">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row propertiesContent">
+						<div class="col-md-12"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="panel panel-default timeline-item">
+			<div class="panel-body">
+				<div>
+					<tabset>
+	                    <tab ng-repeat="tab in timelineTabs" heading="{{tab.title}}" active="tab.active" select="onTimelineTabClick(tab)">
+	                        <div ng-include src="tab.template"></div>
+	                    </tab>
+                	</tabset>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--Templates-->
+
+<!--Template-->
+<script type="text/ng-template" id="timeline.tpl">
+    <div data-ajax-spinner="loadingTimeline">        
+        <div class="empty-text" ng-show="timelines.length == 0">            
+            The Timeline is currently empty 
+        </div>
+        <div id="card_container" class="row">
+            <div class="timelineItem" data-ng-repeat="timeline in timelines">
+                <div class="small">
+                    <div class="smallcard">
+                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(timeline,false)" data-output="timeline.output" ng-class="{selected: timeline.id == selectedTimeline.id}">
+                            <!--    {{timeline.output}}-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="timeline-template.tpl">
+    <div data-ajax-spinner="loadingTemplate">
+        <div class="empty-text" ng-show="templateTimelines.length == 0">
+            The Template currently empty
+        </div>
+        <div id="card_container" class="row">
+            <div class="timelineItem" data-ng-repeat="templateTimelineItem in templateTimelines">
+                <div class="small">
+                    <div class="smallcard">
+                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(templateTimelineItem,true)" data-output="templateTimelineItem.output" ng-class="{selected: templateTimelineItem.id == selectedTimeline.id}">
+                            <!--    {{timeline.output}}-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="location-items.tpl">
+    <div data-ajax-spinner="loadingLocation">
+        <div class="empty-text" ng-show="locations.length == 0">
+            Location Data Not Available
+        </div>
+
+        <div class="row col-md-12">
+            <div id="scroll" class="location-scroll"></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="subscription.tpl">
+    <div id="card_container" class="row">
+        <div class="SubscriptionItem">
+            <div class="small">
+                <input data-checkbox-control="locations" data-name="location" />
+
+                <input data-checkbox-control="timeline" data-name="timeline" />
+            </div>
+        </div>
+    </div>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
