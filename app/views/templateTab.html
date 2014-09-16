@@ -1,0 +1,16 @@
+ <div >
+        <div class="empty-text" ng-show="templateTimelines.length == 0">
+            The Template currently empty
+        </div>
+        <div id="card_container" class="row">
+            <div class="timelineItem" data-ng-repeat="templateTimelineItem in templateTimelines">
+                <div class="small">
+                    <div class="smallcard">
+                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(templateTimelineItem,true)" data-output="templateTimelineItem.output" ng-class="{selected: templateTimelineItem.id == selectedTimeline.id}">
+                            <!--    {{timeline.output}}-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

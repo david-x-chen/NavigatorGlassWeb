@@ -48,85 +48,16 @@
 	<div class="row">
 		<div class="panel panel-default timeline-item">
 			<div class="panel-body">
-				<div>
 					<tabset>
-	                    <tab ng-repeat="tab in timelineTabs" heading="{{tab.title}}" active="tab.active" select="onTimelineTabClick(tab)">
-	                        <div ng-include src="tab.template"></div>
-	                    </tab>
-                	</tabset>
-				</div>
+					  <tab title="Timeline" template-url="/views/timelineTab.html"></tab>
+					  <tab title="Locations" template-url="/views/locationsTab.html"></tab>
+					  <tab title="Templates" template-url="/views/templateTab.html"></tab>
+					  <tab title="Subscription" template-url="/views/subscriptionTab.html"></tab>
+					</tabset>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-<!--Templates-->
-
-<!--Template-->
-<script type="text/ng-template" id="timeline.tpl">
-    <div data-ajax-spinner="loadingTimeline">        
-        <div class="empty-text" ng-show="timelines.length == 0">            
-            The Timeline is currently empty 
-        </div>
-        <div id="card_container" class="row">
-            <div class="timelineItem" data-ng-repeat="timeline in timelines">
-                <div class="small">
-                    <div class="smallcard">
-                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(timeline,false)" data-output="timeline.output" ng-class="{selected: timeline.id == selectedTimeline.id}">
-                            <!--    {{timeline.output}}-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</script>
-
-<script type="text/ng-template" id="timeline-template.tpl">
-    <div data-ajax-spinner="loadingTemplate">
-        <div class="empty-text" ng-show="templateTimelines.length == 0">
-            The Template currently empty
-        </div>
-        <div id="card_container" class="row">
-            <div class="timelineItem" data-ng-repeat="templateTimelineItem in templateTimelines">
-                <div class="small">
-                    <div class="smallcard">
-                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(templateTimelineItem,true)" data-output="templateTimelineItem.output" ng-class="{selected: templateTimelineItem.id == selectedTimeline.id}">
-                            <!--    {{timeline.output}}-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</script>
-
-<script type="text/ng-template" id="location-items.tpl">
-    <div data-ajax-spinner="loadingLocation">
-        <div class="empty-text" ng-show="locations.length == 0">
-            Location Data Not Available
-        </div>
-
-        <div class="row col-md-12">
-            <div id="scroll" class="location-scroll"></div>
-        </div>
-        <div style="clear: both;"></div>
-    </div>
-</script>
-
-<script type="text/ng-template" id="subscription.tpl">
-    <div id="card_container" class="row">
-        <div class="SubscriptionItem">
-            <div class="small">
-                <input data-checkbox-control="locations" data-name="location" />
-
-                <input data-checkbox-control="timeline" data-name="timeline" />
-            </div>
-        </div>
-    </div>
-</script>
-
 
 
 
