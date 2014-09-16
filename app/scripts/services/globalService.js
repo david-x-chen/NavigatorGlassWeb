@@ -11,7 +11,7 @@ angular.module('navigatorGlassProjectApp')
                // global.UserId = window.config.UserId;
                 global.Url = window.config.Url;
             } else {
-                global.ApiUrl = 'http://navigatorglassweb.cloudapp.net:80/api/';
+                global.ApiUrl = 'http://navigatorglassweb.cloudapp.net:80/api';
                // global.ApiToken = 'testapikey';
                // global.UserId = 6;
                 global.Url = 'http://navigatorglassweb.cloudapp.net';
