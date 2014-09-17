@@ -1,12 +1,9 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.controller('TimelineCtrl',function(HttpService,$scope,TimelineService,LocationService,TemplateService){
+.controller('TimelineCtrl',function(HttpService,$scope,TimelineService,LocationService){
 	TimelineService.getTimeline().success(function(result){
 		console.log("Timeline"+result);
-	});
-	TemplateService.getTemplates().success(function(result){
-		console.log("Templates"+result);
 	});
 
 	$scope.loadDefault =function() {
