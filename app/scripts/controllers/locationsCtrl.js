@@ -3,10 +3,10 @@
 angular.module('navigatorGlassProjectApp')
 .controller('LocationCtrl',function(HttpService,$scope,LocationService){
     LocationService.getLocations().success(function(result){
-        console.log("Locations"+result);
-        $scope.CreateNewDivs(result);
-        });
-        $scope.loadLocations = function() {
+        // console.log("Locations"+result);
+        $scope.createNewDivs(result);
+    });
+    $scope.loadLocations = function() {
 
         var Json;
         var Maps = [];
@@ -18,7 +18,7 @@ angular.module('navigatorGlassProjectApp')
         var map;
         var ObjJson;
 
-        function CreateMarkerInfo(MapSel, iE, Pos, Elem) {
+        function createMarkerInfo(MapSel, iE, Pos, Elem) {
             var Acc = Elem.accuracy;
             var Add = Elem.address;
             var Dsp = Elem.displayName;
@@ -48,12 +48,12 @@ angular.module('navigatorGlassProjectApp')
                             Infos[iE].close();
                             Maps[iE].setCenter(Pos);
                         }, 4000
-                    );
+                        );
                 }
-            );
+                );
         }
 
-        $scope.CreateNewDivs= function(Json) {
+        $scope.createNewDivs= function(Json) {
             ObjJson = Json;
 
             var ScrollDiv = document.getElementById('scroll');
@@ -93,19 +93,14 @@ angular.module('navigatorGlassProjectApp')
                     if (MapsDivs[iE]) {
                         Maps[iE] = new google.maps.Map(MapsDivs[iE], MapOptions);
                     }
-                    CreateMarkerInfo(Maps[iE], iE, Center, Elem);
+                    createMarkerInfo(Maps[iE], iE, Center, Elem);
                 }
             }
             else {
                 console.log("Error while loading");
-                    }
-            //Bind remote validate 
-            //removeValidate();
+            }
         }
-        // LocationService.getLocations().success(function(result){
-        // console.log("Locations"+result);
-        // CreateNewDivs(result);
-        // });
     }
-   $scope.loadLocations();
+
+    $scope.loadLocations();
 });
