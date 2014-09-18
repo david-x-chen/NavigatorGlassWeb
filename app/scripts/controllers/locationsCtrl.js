@@ -3,7 +3,6 @@
 angular.module('navigatorGlassProjectApp')
 .controller('LocationCtrl',function(HttpService,$scope,LocationService){
     LocationService.getLocations().success(function(result){
-        // console.log("Locations"+result);
         $scope.createNewDivs(result);
     });
     $scope.loadLocations = function() {
