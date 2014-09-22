@@ -31,6 +31,7 @@ angular.module('navigatorGlassProjectApp')
                     // });
 
     };
+    
 
     $scope.loadTemplates();
 });

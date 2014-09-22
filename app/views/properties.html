@@ -2,27 +2,40 @@
     <div class=" row propContent">
         <div class="col-md-6">
 
-            <label data-label-control="selectedTimeline.id" data-name="Id"></label>
-
-            <input data-textbox-control="selectedTimeline.title" ng-minlength="5" ng-maxlength="20" data-name="Title" />
-
-            <input data-textbox-control="selectedTimeline.location.latitude" data-name="Latitude" data-datatype="float" />
-
-            <input data-textbox-control="selectedTimeline.location.longitude" data-name="Longitude" data-datatype="float" />
-            
-            <input data-textbox-control="selectedTimeline.location.address" ng-minlength="5" ng-maxlength="20" data-name="Address" data-datatype="float" />
-
-            <input data-datetime-picker-control="selectedTimeline.displayTime" data-name="Display Time" />
-            
+            <label>Id : {{selectedTimeline.id}}</label>
+            <br>       
+            <label>Title:
+                <input type="text" class="input-medium search-query" ng-model="selectedTimeline.title" ng-minlength="5" ng-maxlength="20" data-name="Title" />
+            </label>
+            <br>
+            <label>Latitude:
+                <input type="text" ng-model="selectedTimeline.location.latitude" data-name="Latitude" data-datatype="float" />
+            </label>
+            <br>
+            <label>Longitude:
+                <input type="text" ng-model="selectedTimeline.location.longitude" data-name="Longitude" data-datatype="float" />
+            </label>
+            <br>
+            <label>Address:
+                <input type="text" ng-model="selectedTimeline.location.address" ng-minlength="5" ng-maxlength="20" data-name="Address" data-datatype="float" />
+            </label>
+            <br>
+            <label>Display Time:
+                <input data-datetime-picker-control="selectedTimeline.displayTime" data-name="Display Time" />
+            </label>
         </div>
         <div class="col-md-6">
-            <input data-textbox-control="selectedTimeline.sourceItemId" data-name="Source Item Id" title="Source Item Id" />
+            <label>Source Item Id:
+                <input type="text" ng-model="selectedTimeline.sourceItemId" data-name="Source Item Id" title="Source Item Id" />
+            </label>
+            <br>
+            <label>Canonical Url:
+                <input type="text" ng-model="selectedTimeline.canonicalUrl" data-name="Canonical Url" title="Canonical Url" />
+            </label>
+            <br>
+            <label ng-model="selectedTimeline.etag" data-name="Etag"></label>
 
-            <input data-textbox-control="selectedTimeline.canonicalUrl" data-name="Canonical Url" title="Canonical Url" />
-
-            <label data-label-control="selectedTimeline.etag" data-name="Etag"></label>
-
-            <label data-label-control="selectedTimeline.kind" data-name="Kind"></label>
+            <label ng-model="selectedTimeline.kind" data-name="Kind"></label>
 
             <input data-checkbox-control="selectedTimeline.isPinned" data-name="Pinned" image />
 
