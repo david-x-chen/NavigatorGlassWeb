@@ -9,13 +9,16 @@ angular.module('navigatorGlassProjectApp')
         controller: ["$scope", function($scope) {
             var panes = $scope.panes = [];
             $scope.select = function(pane) {
-                window.angular.forEach(panes, function(item) {
+                angular.forEach(panes, function(item) {
                     item.selected = false;
                 });
                 pane.selected = true;
             };
             this.addPane = function(pane) {
-                if (panes.length == 0) $scope.select(pane);
+                if (panes.length == 0) {
+                    $scope.select(pane);
+                }
+
                 panes.push(pane);
             };
         }],

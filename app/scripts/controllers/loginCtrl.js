@@ -7,7 +7,6 @@
         var scopes = 'https://www.googleapis.com/auth/glass.timeline';
 
         window.handleClientLoad = function() {
-            console.log('................');
             gapi.client.setApiKey(apiKey);
             window.setTimeout(checkAuth,1);
         }
