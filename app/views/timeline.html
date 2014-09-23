@@ -9,54 +9,44 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="row">
-					<div class="row">
-						<div class="col-md-6">
-							<!-- Timeline status goes here-->
-						</div>
-					</div>
 					<div class="col-md-6 topContainer">
 						<div class="previewContainer">
 							<div class="full">
 								<div class="scalable">
-                                    <div class="card" style="left: 0px; width: 592px; " ng-bind-html="selectedTimeline.output">
-                                    </div>
+									<div class="card" style="left: 0px; width: 592px; " ng-bind-html="selectedTimeline.output">
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6 sourceContainer codeEditor">
-						<div class="tabbable">
-							<ul class="nav nav-tabs">
-								<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">
-									<a ng-click="select(pane)"></a>
-								</li>
-							</ul>
-							<div class="tab-content">
-								<div class="tab-pane" ng-class="{active:selected}">
-									<div class="sourceBox">
-									</div>
-								</div>
-							</div>
-						</div>
+						 <tabs>
+                            <pane heading="HTML">
+                                <div class="sourceBox" data-ui-ace="aceOption" data-ng-model="selectedTimeline.html"></div>
+                            </pane>
+                            <pane heading="JSON">
+                                <div class="jsonRep" data-ui-ace="aceOption" data-ng-model="selectedTimeline.jsonRepresentation"></div>
+                            </pane>
+                        </tabs>
 					</div>
-					<div class="row propertiesContent">
-						<div class="col-md-12">
-							
-							<div class="row">
-								<div class="panel panel-default">
-									<div class="panel-body propList">
-										<tabs>
-											<pane heading="Properties">
-												<div data-ng-include="" data-src="'/views/properties.html'"></div>
-											</pane>
-											<pane heading="Menu Items">
-												<div data-ng-include="" data-src="'/views/menuitems.html'"></div>
-											</pane>
-											<pane heading="Speakable Text">
-												<div data-ng-include="" data-src="'/views/speakabletext.html'"></div>
-											</pane>
-										</tabs>
-									</div>
+				</div>
+
+				<div class="row propertiesContent">
+					<div class="col-md-12">			
+						<div class="row">
+							<div class="panel panel-default">
+								<div class="panel-body propList">
+									<tabs>
+										<pane heading="Properties">
+											<div data-ng-include="" data-src="'/views/properties.html'"></div>
+										</pane>
+										<pane heading="Menu Items">
+											<div data-ng-include="" data-src="'/views/menuitems.html'"></div>
+										</pane>
+										<pane heading="Speakable Text">
+											<div data-ng-include="" data-src="'/views/speakabletext.html'"></div>
+										</pane>
+									</tabs>
 								</div>
 							</div>
 						</div>

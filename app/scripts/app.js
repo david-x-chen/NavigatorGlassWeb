@@ -9,7 +9,8 @@ angular
   'ngSanitize',
   'ngTouch',
   'directive.g+signin',
-  'bootstrap.tabset'
+  'bootstrap.tabset',
+  'ui.ace'
   ])
 .config(function ($routeProvider) {
   $routeProvider
