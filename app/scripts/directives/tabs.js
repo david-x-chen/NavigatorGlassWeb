@@ -1,5 +1,7 @@
 'use strict';
-
+/*
+Directive that creates tabs elements.
+*/
 angular.module('navigatorGlassProjectApp')
 .directive('tabs', function() {
     return {

@@ -1,5 +1,7 @@
 'use strict';
-
+/*
+Directive needed by bootstrap ui to create tabs elements.
+*/
 angular.module('bootstrap.tabset', [])
 .directive('tabset', function () {
   return {
@@ -30,14 +32,14 @@ angular.module('bootstrap.tabset', [])
       };
     },
     template:
-      '<div class="row-fluid">' +
-        '<div class="row-fluid">' +
-          '<div class="nav nav-tabs" ng-transclude></div>' +
-        '</div>' +
-        '<div class="row-fluid">' +
-          '<ng-include src="templateUrl">' +
-        '</ng-include></div>' +
-      '</div>'
+    '<div class="row-fluid">' +
+    '<div class="row-fluid">' +
+    '<div class="nav nav-tabs" ng-transclude></div>' +
+    '</div>' +
+    '<div class="row-fluid">' +
+    '<ng-include src="templateUrl">' +
+    '</ng-include></div>' +
+    '</div>'
   };
 })
 .directive('tab', function () {
@@ -63,8 +65,8 @@ angular.module('bootstrap.tabset', [])
       });
     },
     template:
-      '<li ng-class="{active: selected}">' +
-        '<a href="" ng-click="select()">{{ title }}</a>' +
-      '</li>'
+    '<li ng-class="{active: selected}">' +
+    '<a href="" ng-click="select()">{{ title }}</a>' +
+    '</li>'
   };
 });

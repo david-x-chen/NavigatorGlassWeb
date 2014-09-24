@@ -13,14 +13,15 @@ angular.module('navigatorGlassProjectApp')
         newItem: true,
         statusMessage: "",
         statusClass: "",
-        forAjaxRequest: false,
         jsonRepresentation: "",
         speakableText: "",
         initState: "",
         state: "",
         isDirty: false
     };
-
+    /*
+    Method that creates the state for the TimelineItem or TemplateItem
+    */
     function makeState(timeline) {
         timeline.location = timeline.location || {};
         var temporaryState = {
@@ -34,8 +35,9 @@ angular.module('navigatorGlassProjectApp')
             canonicalUrl: timeline.canonicalUrl,
             speakableText: timeline.speakableText
         };
-
-        //textbox empty always return "", 
+        /*
+        Method that returns "" in case the textbox is empty.
+        */
         function replacer(key, value) {
             if (value === null || value === undefined) {
                 return "";
@@ -45,9 +47,14 @@ angular.module('navigatorGlassProjectApp')
 
         return JSON.stringify(temporaryState, replacer);
     }
-
-    function makeJsonRepresentation(timeline) {
+    /*
+    Method that creates a JSON representation of a timeline or template.
+    */
+    function createJsonRepresentation(timeline) {
         var jsonobj = {};
+        /*
+        Helper method used to iterate through a collection
+        */
         function find(array, attrs) {
             for (var i = 0, len = array.length; i < len; i++) {
                 for (var key in attrs) {
@@ -68,14 +75,15 @@ angular.module('navigatorGlassProjectApp')
         var str = JSON.stringify(jsonobj, null, '\t');
         $scope.selectedTimeline.jsonRepresentation = str;
     }
-
+    /*
+    Method that creates a preview of the Timeline.
+    */
     $scope.previewTimeline = function (timeline, isNewItem) {
         timeline = setTimelineItemOutput(timeline);
         $scope.selectedTimeline = timeline;
         $scope.selectedTimeline.newItem = isNewItem;
         $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
-        makeJsonRepresentation($scope.selectedTimeline);
-        $scope.selectedTimeline.forAjaxRequest = false;
+        createJsonRepresentation($scope.selectedTimeline);
 
         if (isNewItem) {
             $scope.selectedTimeline.output = $scope.selectedTimeline.htmlState;
@@ -84,9 +92,10 @@ angular.module('navigatorGlassProjectApp')
         if ($scope.selectedTimeline.id != guidConstant) {
             $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
         }
-        //console.log($scope.selectedTimeline);
     };
-
+    /*
+    Method that inputs a TimelineItem or TemplateItem and returns it as HTML or Text
+    */
     function setTimelineItemOutput(item) {
         if (item.html && item.html.length > 0) {
             item.output = item.htmlState = $sce.trustAsHtml(item.html);
@@ -95,10 +104,13 @@ angular.module('navigatorGlassProjectApp')
         }
         return item;
     }
-
+    /*
+    Method that uses the TimelineService to retrieve Timelines information using
+    the API.After the information is retrieved with success it will output the 
+    TimelineItems.
+    */
     $scope.loadTimelines = function(){
         TimelineService.getTimeline().success(function(result){
-            console.log("Timeline"+result);
             $scope.timelines= result;
             for(var i=0; i< $scope.timelines.length ; i++)
             {

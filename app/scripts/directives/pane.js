@@ -1,5 +1,7 @@
 'use strict';
-
+/*
+Directive that creates pane elements inside tab elements.
+*/
 angular.module('navigatorGlassProjectApp')
 .directive('pane', function() {
     return {

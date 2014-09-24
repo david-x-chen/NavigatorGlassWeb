@@ -8,7 +8,6 @@ angular
   'ngRoute',
   'ngSanitize',
   'ngTouch',
-  'directive.g+signin',
   'bootstrap.tabset',
   'ui.ace'
   ])
@@ -18,11 +17,11 @@ angular
     templateUrl: 'views/main.html',
     controller: 'MainCtrl'
   })
-  .when('/Main/Timeline', {
+  .when('/Timeline', {
     templateUrl: 'views/timeline.html',
     controller: 'TimelineCtrl'
   })
-  .when('/Account/Login', {
+  .when('/Login', {
     templateUrl: 'views/login.html',
     controller: 'LoginCtrl'
   })

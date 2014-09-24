@@ -1,91 +1,110 @@
 'use.strict'
 
 angular.module('navigatorGlassProjectApp')
-.controller('LocationCtrl',function(HttpService,$scope,LocationService) {
-    LocationService.getLocations().success(function(result) {
-        $scope.createNewDivs(result);
+.controller('LocationCtrl',function(HttpService,$scope,LocationService){
+    /*
+        Retrieving location data using the angular service named Location Service
+    */
+    LocationService.getLocations().success(function(result){
+        /*
+            In case of success here I will create the new divs with the maps 
+            based on the information sent by the API
+        */
+        $scope.createNewMaps(result);
     });
     $scope.loadLocations = function() {
-
-        var Json;
-        var Maps = [];
-        var MapsOpt = [];
-        var MapsDivs = [];
-        var Infos = [];
-        var Markers = [];
-        var Centers = [];
+        var json;
+        var maps = [];
+        var mapsOpt = [];
+        var mapsDivs = [];
+        var infos = [];
+        var markers = [];
+        var centers = [];
         var map;
-        var ObjJson;
+        var objJson;
+        /*
+        Method that creates the Marker(Pin) from Google Maps
+        */
+        function createMarkerInfo(MapSel, iE, Pos, elem) {
+            var acc = elem.accuracy;
+            var add = elem.address;
+            var dsp = elem.displayName;
+            var lat = elem.latitude;
+            var lon = elem.longitude;
+            var tim = elem.timestamp;
+            var id = elem.id;
+            var knd = elem.kind;
+            var tmr = elem.timestampRaw;
+            var infoContent = '<font style="font-size: 6pt;font-family: Verdana;font-weight: normal;font-style: normal;color: black;">';
+            infoContent += '<b>ID:</b>' + id;
+            infoContent += '&nbsp;&nbsp;<b>Accuracy:</b>' + acc + '<br>';
+            infoContent += '<b>lat/lon:</b>' + lat + '/' + lon + '<br>';
+            infoContent += '<b>Date:</b>' + tim + '<br>';
 
-        function createMarkerInfo(MapSel, iE, Pos, Elem) {
-            var Acc = Elem.accuracy;
-            var Add = Elem.address;
-            var Dsp = Elem.displayName;
-            var Lat = Elem.latitude;
-            var Lon = Elem.longitude;
-            var Tim = Elem.timestamp;
-            var Id = Elem.id;
-            var Knd = Elem.kind;
-            var TmR = Elem.timestampRaw;
-            var InfoContent = '<font style="font-size: 6pt;font-family: Verdana;font-weight: normal;font-style: normal;color: black;">';
-            InfoContent += '<b>ID:</b>' + Id;
-            InfoContent += '&nbsp;&nbsp;<b>Accuracy:</b>' + Acc + '<br>';
-            InfoContent += '<b>Lat/lon:</b>' + Lat + '/' + Lon + '<br>';
-            InfoContent += '<b>Date:</b>' + Tim + '<br>';
+            infos[iE] = new google.maps.InfoWindow({ content: infoContent });
+            markers[iE] = new google.maps.Marker({ map: MapSel, position: Pos });
 
-            Infos[iE] = new google.maps.InfoWindow({ content: InfoContent });
-            Markers[iE] = new google.maps.Marker({ map: MapSel, position: Pos });
-
-            google.maps.event.addListener(Markers[iE], 'click', function () {
-                    Infos[iE].open(MapSel, Markers[iE]);
-                    setTimeout(function () {
-                            Infos[iE].close();
-                            Maps[iE].setCenter(Pos);
-                        }, 4000);
-                    }
+            google.maps.event.addListener
+            (
+                markers[iE],
+                'click', function () {
+                    infos[iE].open(MapSel, markers[iE]);
+                    setTimeout
+                    (
+                        function () {
+                            infos[iE].close();
+                            maps[iE].setCenter(Pos);
+                        }, 4000
+                        );
+                }
                 );
         }
+        /*
+        Method that creates maps as div elements
+        */
+        $scope.createNewMaps= function(json) {
+            objJson = json;
 
-        $scope.createNewDivs= function(Json) {
-            ObjJson = Json;
-
-            var ScrollDiv = document.getElementById('scroll');
-            for (var iE = 0; iE < ObjJson.length; iE++) {
-                MapsDivs[iE] = document.createElement('div');
-                MapsDivs[iE].id = 'map_canvas_' + iE;
-                MapsDivs[iE].style.cssText = "width:265px;height:150px";
-                document.getElementById('scroll').appendChild(MapsDivs[iE]);
+            var scrollDiv = document.getElementById('scroll');
+            for (var iE = 0; iE < objJson.length; iE++) {
+                mapsDivs[iE] = document.createElement('div');
+                mapsDivs[iE].id = 'map_canvas_' + iE;
+                mapsDivs[iE].style.cssText = "width:265px;height:150px";
+                document.getElementById('scroll').appendChild(mapsDivs[iE]);
             }
-            initialize();
+            init();
         }
+        /*
+        Method that initalizes each map
+        */
+        function init() {
+            var scrollDiv = document.getElementById('scroll');
 
-        function initialize() {
-            var ScrollDiv = document.getElementById('scroll');
-
-            if (ObjJson.length > 0) {
-                for (var iE = 0; iE < ObjJson.length; iE++) {
-                    var Elem = ObjJson[iE];
-                    var Lat = Elem.latitude;
-                    var Lon = Elem.longitude;
-                    var Time = Elem.timestamp;
-                    var Center = new google.maps.LatLng(Lat, Lon);
+            if (objJson.length > 0) {
+                for (var iE = 0; iE < objJson.length; iE++) {
+                    var elem = objJson[iE];
+                    var lat = elem.latitude;
+                    var lon = elem.longitude;
+                    var time = elem.timestamp;
+                    var center = new google.maps.LatLng(lat, lon);
 
                     var NewLeft = (270 * ((iE - 1) + 1));
                     var NewTop = (150 * (iE) * -1);
 
-                    MapsDivs[iE].style.top = NewTop + 'px';
-                    MapsDivs[iE].style.left = NewLeft + 'px';
+                    mapsDivs[iE].style.top = NewTop + 'px';
+                    mapsDivs[iE].style.left = NewLeft + 'px';
 
-                    var MapOptions = {
+                    var MapOptions =
+                    {
                         zoom: 17,
-                        center: Center,
+                        center: center,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-
-                    if (MapsDivs[iE]) {
-                        Maps[iE] = new google.maps.Map(MapsDivs[iE], MapOptions);
                     }
-                    createMarkerInfo(Maps[iE], iE, Center, Elem);
+
+                    if (mapsDivs[iE]) {
+                        maps[iE] = new google.maps.Map(mapsDivs[iE], MapOptions);
+                    }
+                    createMarkerInfo(maps[iE], iE, center, elem);
                 }
             }
             else {
@@ -93,6 +112,6 @@ angular.module('navigatorGlassProjectApp')
             }
         }
     }
-
+    
     $scope.loadLocations();
 });

@@ -1,5 +1,7 @@
 'use strict';
-
+/*
+Service used to make different HTTP requests.
+*/
 angular.module('navigatorGlassProjectApp')
 .service('HttpService',function($http,Global){
     return {
