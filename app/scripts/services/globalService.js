@@ -1,6 +1,6 @@
   'use strict';
 /*
-Service that does initialize some parameters liek ApiUrl and the Url.
+Service that does initialize some parameters like ApiUrl and the Url.
 */
   angular.module('navigatorGlassProjectApp')
   .service('Global',function($window,$rootScope){
