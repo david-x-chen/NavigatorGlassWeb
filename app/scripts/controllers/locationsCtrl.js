@@ -1,8 +1,8 @@
 'use.strict'
 
 angular.module('navigatorGlassProjectApp')
-.controller('LocationCtrl',function(HttpService,$scope,LocationService){
-    LocationService.getLocations().success(function(result){
+.controller('LocationCtrl',function(HttpService,$scope,LocationService) {
+    LocationService.getLocations().success(function(result) {
         $scope.createNewDivs(result);
     });
     $scope.loadLocations = function() {
@@ -36,19 +36,13 @@ angular.module('navigatorGlassProjectApp')
             Infos[iE] = new google.maps.InfoWindow({ content: InfoContent });
             Markers[iE] = new google.maps.Marker({ map: MapSel, position: Pos });
 
-            google.maps.event.addListener
-            (
-                Markers[iE],
-                'click', function () {
+            google.maps.event.addListener(Markers[iE], 'click', function () {
                     Infos[iE].open(MapSel, Markers[iE]);
-                    setTimeout
-                    (
-                        function () {
+                    setTimeout(function () {
                             Infos[iE].close();
                             Maps[iE].setCenter(Pos);
-                        }, 4000
-                        );
-                }
+                        }, 4000);
+                    }
                 );
         }
 
@@ -82,12 +76,11 @@ angular.module('navigatorGlassProjectApp')
                     MapsDivs[iE].style.top = NewTop + 'px';
                     MapsDivs[iE].style.left = NewLeft + 'px';
 
-                    var MapOptions =
-                    {
+                    var MapOptions = {
                         zoom: 17,
                         center: Center,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
-                    }
+                    };
 
                     if (MapsDivs[iE]) {
                         Maps[iE] = new google.maps.Map(MapsDivs[iE], MapOptions);
