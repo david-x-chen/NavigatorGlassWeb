@@ -39,10 +39,7 @@ angular.module('navigatorGlassProjectApp')
         Method that returns "" in case the textbox is empty.
         */
         function replacer(key, value) {
-            if (value === null || value === undefined) {
-                return "";
-            }
-            return value;
+            return (value ? value : "");
         }
 
         return JSON.stringify(temporaryState, replacer);
