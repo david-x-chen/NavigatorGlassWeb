@@ -1,27 +1,27 @@
 <div ng-include src="' views/header.html'"></div>
 <div class="row">
-	<div class="row">
-		<div class="btn btn-default delBtn">Refresh</div>
-		<div class="btn btn-primary saveBtn">Update</div>
-		<div class="btn btn-danger delBtn">Delete</div>
-		<div class="btn btn-primary saveBtn">Insert</div>
-	</div>
-	<div class="row">
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-md-6 topContainer">
-						<div class="previewContainer">
-							<div class="full">
-								<div class="scalable">
-									<div class="card" style="left: 0px; width: 592px; " ng-bind-html="selectedTimeline.output">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 sourceContainer codeEditor">
-						 <tabs>
+    <div class="row">
+        <div class="btn btn-default delBtn">Refresh</div>
+        <div class="btn btn-primary saveBtn">Update</div>
+        <div class="btn btn-danger delBtn">Delete</div>
+        <div class="btn btn-primary saveBtn">Insert</div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6 topContainer">
+                        <div class="previewContainer">
+                            <div class="full">
+                                <div class="scalable">
+                                    <div class="card" style="left: 0px; width: 592px; " ng-bind-html="selectedTimeline.output">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 sourceContainer codeEditor">
+                         <tabs>
                             <pane heading="HTML">
                                 <div class="sourceBox" data-ui-ace="aceOption" data-ng-model="selectedTimeline.html"></div>
                             </pane>
@@ -29,56 +29,43 @@
                                 <div class="jsonRep" data-ui-ace="aceOption" data-ng-model="selectedTimeline.jsonRepresentation"></div>
                             </pane>
                         </tabs>
-					</div>
-				</div>
+                    </div>
+                </div>
 
-				<div class="row propertiesContent">
-					<div class="col-md-12">			
-						<div class="row">
-							<div class="panel panel-default">
-								<div class="panel-body propList">
-									<tabs>
-										<pane heading="Properties">
-											<div data-ng-include="" data-src="'/views/properties.html'"></div>
-										</pane>
-										<pane heading="Menu Items">
-											<div data-ng-include="" data-src="'/views/menuitems.html'"></div>
-										</pane>
-										<pane heading="Speakable Text">
-											<div data-ng-include="" data-src="'/views/speakabletext.html'"></div>
-										</pane>
-									</tabs>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="panel panel-default timeline-item">
-			<div class="panel-body">
-				<tabset>
-					<tab title="Timeline" template-url="/views/timelineTab.html"></tab>
-					<tab title="Locations" template-url="/views/locationsTab.html"></tab>
-					<tab title="Templates" template-url="/views/templateTab.html"></tab>
-					<tab title="Subscription" template-url="/views/subscriptionTab.html"></tab>
-				</tabset>
-			</div>
-		</div>
-	</div>
+                <div class="row propertiesContent">
+                    <div class="col-md-12">         
+                        <div class="row">
+                            <div class="panel panel-default">
+                                <div class="panel-body propList">
+                                    <tabs>
+                                        <pane heading="Properties">
+                                            <div data-ng-include="" data-src="'./views/properties.html'"></div>
+                                        </pane>
+                                        <pane heading="Menu Items">
+                                            <div data-ng-include="" data-src="'./views/menuitems.html'"></div>
+                                        </pane>
+                                        <pane heading="Speakable Text">
+                                            <div data-ng-include="" data-src="'./views/speakabletext.html'"></div>
+                                        </pane>
+                                    </tabs>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default timeline-item">
+            <div class="panel-body">
+                <tabset>
+                    <tab title="Timeline" template-url="./views/timelineTab.html"></tab>
+                    <tab title="Locations" template-url="./views/locationsTab.html"></tab>
+                    <tab title="Templates" template-url="./views/templateTab.html"></tab>
+                    <tab title="Subscription" template-url="./views/subscriptionTab.html"></tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
