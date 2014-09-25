@@ -1,14 +1,31 @@
+<div ng-include src="' views/header.html'"></div>
+<div class="jumbotron">
+  <div class="container">
+    <div class="page-header text-center">
+      <h1>Navigator Glass</h1>
+    </div>
+  </div>
+</div>
 <div class="container">
-  <div class="row">
-    <div class="col-md-5">
-      <h2>Authentication</h2>
-      <ul>
-        <li><a ng-href="./#/Timeline">Timeline</a></li>
-        <li><a ng-href="./#/Login">External Login</a></li>
-        <li><a ng-href="./#/Manage">Manage</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
+  <form role="form" class="ng-pristine ng-invalid ng-invalid-required">
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-4">
+        <h2 class="form-login-heading">Login</h2>
+        <input type="text" class="login-form-control ng-pristine ng-invalid ng-invalid-required" placeholder="Username" required="" autofocus="">
+        <input type="password" class="login-form-control ng-pristine ng-invalid ng-invalid-required" placeholder="Password" required="">
+        <div class="col-md-2">
+        &nbsp;
+        </div>
+        <button class="btn btn-md btn-info btn-block" type="submit" data-ng-click="login()">Login</button>
+        <!-- <div data-ng-hide="message == ''" class="alert alert-danger ng-binding ng-hide">
+      </div> -->
+      </div>
+      <div class="col-md-4">
+        <h2 class="form-login-heading">Google Login</h2>
+      </div>
+  </div>
+</form>
 </div>

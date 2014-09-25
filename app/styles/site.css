@@ -361,11 +361,11 @@ body.full {
 }
 
 .codeEdotor {
-     max-width: 620px;
+   max-width: 620px;
 }
 .propContent {
-     /*max-width: 595px;*/
-    /*margin-top: 5px;*/
+   /*max-width: 595px;*/
+   /*margin-top: 5px;*/
     /*border-top: none;
     border-left: none;*/
     border: none;
@@ -437,14 +437,14 @@ body.full {
   /*border:1px solid black;*/
   /*background:white;*/
 }
- 
+
 .sample-show-hide.ng-hide-add, .sample-show-hide.ng-hide-remove {
     -webkit-transition:all linear 0.5s;
-  -moz-transition:all linear 0.5s;
-  -o-transition:all linear 0.5s;
+    -moz-transition:all linear 0.5s;
+    -o-transition:all linear 0.5s;
     -ms-transition:all linear 0.5s;
     transition:all linear 0.5s;
-  display:block!important;
+    display:block!important;
 }
 
 .sample-show-hide.ng-hide-add.ng-hide-add-active,
@@ -476,8 +476,8 @@ body.full {
 }
 
 .disableItem {
-   background-color: #EEEEEE;
-    /*cursor: not-allowed;*/
+ background-color: #EEEEEE;
+ /*cursor: not-allowed;*/
 }
 .propParContent {
     margin-top: 29px;
@@ -520,10 +520,10 @@ body.full {
 	top:2px;
 	left:2px;*/
     padding-top: 20px;
-	width:100%;
-	height:200px;
-	overflow:auto;
-	-ms-overflow-y: hidden;
+    width:100%;
+    height:200px;
+    overflow:auto;
+    -ms-overflow-y: hidden;
     overflow-y:hidden;
 }
 
@@ -536,4 +536,52 @@ body.full {
 }
 .has-error {
     background-color: pink;
+}
+a:hover{
+    text-decoration: none;
+}
+.centered{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.navbar-inverse{
+    border-color: #007196;
+    background-color: #008cba;
+    color: white;
+}
+.navbar-inverse .navbar-brand {
+color: white;
+}
+.navbar-inverse .navbar-nav > li > a {
+color: white;
+}
+.page-header {
+padding-bottom: 9.5px;
+margin: 42px 0 21px;
+border-bottom: 1px solid #dddddd;
+}
+.text-center {
+text-align: center;
+}
+.login-form-control {
+display: block;
+width: 100%;
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+background-image: none;
+border: 1px solid #ccc;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+max-width: 100%;
 }
