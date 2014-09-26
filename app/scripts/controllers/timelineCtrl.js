@@ -5,6 +5,8 @@ angular.module('navigatorGlassProjectApp')
     var allowedJsonKeyProperty = ["id", "etag", "text", "html", "created", "updated", "menuItems", "speakableText"];
     var guidConstant = "00000000-0000-0000-0000-000000000000";
     
+    $scope.modes = ['Scheme', 'XML', 'Javascript', 'Html'];
+    $scope.mode = $scope.modes[0];
     $scope.timelines = [];
 
     $scope.selectedTimeline = {
@@ -22,6 +24,10 @@ angular.module('navigatorGlassProjectApp')
     /*
     Method that creates the state for the TimelineItem or TemplateItem
     */
+
+    $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
+    $scope.templateTimelines = [];
+    
     function makeState(timeline) {
         timeline.location = timeline.location || {};
         var temporaryState = {
@@ -75,14 +81,15 @@ angular.module('navigatorGlassProjectApp')
     /*
     Method that creates a preview of the Timeline.
     */
-    $scope.previewTimeline = function (timeline, isNewItem) {
+    $scope.previewTimeline = function (timeline, newItem) {
         timeline = setTimelineItemOutput(timeline);
+        console.log(timeline);
         $scope.selectedTimeline = timeline;
-        $scope.selectedTimeline.newItem = isNewItem;
+        $scope.selectedTimeline.newItem = newItem;
         $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
         createJsonRepresentation($scope.selectedTimeline);
 
-        if (isNewItem) {
+        if (newItem) {
             $scope.selectedTimeline.output = $scope.selectedTimeline.htmlState;
             $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
         }
@@ -95,12 +102,26 @@ angular.module('navigatorGlassProjectApp')
     */
     function setTimelineItemOutput(item) {
         if (item.html && item.html.length > 0) {
-            item.output = item.htmlState = $sce.trustAsHtml(item.html);
+            item.output = item.html;
+            item.htmlState = item.html;
+            console.log(item.output);
         } else {
             item.output = item.textState = item.text;
         }
         return item;
     }
+    $scope.aceOption = {
+        mode: $scope.mode.toLowerCase(),
+        onLoad: function (ace) {
+            $scope.modeChanged = function () {
+                ace.getSession().setMode('ace/mode/' + $scope.mode.toLowerCase());
+                ace.setOptions({
+                    maxLines: Infinity
+                });
+            };
+
+        }
+    };
     /*
     Method that uses the TimelineService to retrieve Timelines information using
     the API.After the information is retrieved with success it will output the 

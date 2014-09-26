@@ -5,7 +5,8 @@ angular.module('navigatorGlassProjectApp')
 	*/
 	function setTemplateItemOutput(item) {
 		if (item.html && item.html.length > 0) {
-			item.output = item.htmlState = $sce.trustAsHtml(item.html);
+			item.output = item.html;
+            item.htmlState = item.html;
 		} else {
 			item.output = item.textState = item.text;
 		}
