@@ -1,12 +1,12 @@
 <div class="row menuContent">
     <div class="col-md-6">
         <form class="form-horizontal ng-pristine ng-valid">
-            <span class="form-group" ng-repeat="menuItem in menuItems">
+            <div class="form-group" ng-repeat="menuItem in menuItems">
                 <label class="control-label col-md-3 propLabel">{{menuItem.action}}</label>
-                <div class="col-md-9">
-                    <input class="col-md-6" type="checkbox" ng-model="menuItem.state">
+                <div class="col-md-3">
+                    <input type="checkbox" ng-model="menuItem.state">
                 </div>
-            </span>
+            </div>
         </form>
     </div>
 </div>
