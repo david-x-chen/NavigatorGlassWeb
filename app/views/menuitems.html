@@ -1,18 +1,12 @@
 <div class="row menuContent">
-
     <div class="col-md-6">
-
-        <div data-editable-property="selectedTimeline.speakableText" data-name="Speakable Text"></div>
-
-        <input data-checkbox-control="Delete" data-name="Delete" />
-
-        <input data-checkbox-control="Pinned" data-name="Pinned" />
-
-        <input data-checkbox-control="Navigate" data-name="Navigate" />
-    </div>
-    <div class="col-md-6">
-        <select data-dropdown-list-control="State" data-name="Custom Memu" data-options="['DEFAULT', 'PENDING', 'CONFIRMED']"></select>
-        DisplayName<br />
-        Icon URL Textbox<br />
+        <form class="form-horizontal ng-pristine ng-valid">
+            <span class="form-group" ng-repeat="menuItem in menuItems">
+                <label class="control-label col-md-3 propLabel">{{menuItem.action}}</label>
+                <div class="col-md-9">
+                    <input class="col-md-6" type="checkbox" ng-model="menuItem.state">
+                </div>
+            </span>
+        </form>
     </div>
 </div>

@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.controller('TimelineCtrl',function(HttpService,$sce,$scope,TimelineService,LocationService) {
+.controller('TimelineCtrl',function(HttpService,$sce,$scope,TimelineService,LocationService,MenuItemService) {
     var allowedJsonKeyProperty = ["id", "etag", "text", "html", "created", "updated", "menuItems", "speakableText"];
     var guidConstant = "00000000-0000-0000-0000-000000000000";
     
     $scope.modes = ['Scheme', 'XML', 'Javascript', 'Html'];
     $scope.mode = $scope.modes[0];
     $scope.timelines = [];
+    $scope.tabName="HTML";
 
     $scope.selectedTimeline = {
         title: "",
@@ -90,7 +91,7 @@ angular.module('navigatorGlassProjectApp')
         createJsonRepresentation($scope.selectedTimeline);
 
         if (newItem) {
-            $scope.selectedTimeline.output = $scope.selectedTimeline.htmlState;
+            $scope.selectedTimeline.output = $scope.selectedTimeline.output;
             $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
         }
         if ($scope.selectedTimeline.id != guidConstant) {
@@ -104,9 +105,11 @@ angular.module('navigatorGlassProjectApp')
         if (item.html && item.html.length > 0) {
             item.output = item.html;
             item.htmlState = item.html;
-            console.log(item.output);
+            $scope.tabName="HTML";
         } else {
             item.output = item.textState = item.text;
+            console.log(item.output);
+            $scope.tabName="TEXT"
         }
         return item;
     }
@@ -130,12 +133,16 @@ angular.module('navigatorGlassProjectApp')
     $scope.loadTimelines = function(){
         TimelineService.getTimeline().success(function(result){
             $scope.timelines= result;
+            MenuItemService.getMenuItems().success(function(result){
+                $scope.menuItems= result;
+                console.log($scope.menuItems);
+            });
             for(var i=0; i< $scope.timelines.length ; i++)
             {
                 setTimelineItemOutput($scope.timelines[i]);
             }
         });
-    };
-    $scope.loadTimelines();
+};
+$scope.loadTimelines();
 
 });
