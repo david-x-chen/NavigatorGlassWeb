@@ -18,5 +18,10 @@
     "angular-mocks": "~1.2.0",
     "angular-scenario": "~1.2.0"
   },
+  "overrides": {
+    "ace-builds": {
+      "main": ["src-noconflict/ace.js", "src-noconflict/mode-javascript.js","src-noconflict/mode-scheme.js"]
+    }
+  },
   "appPath": "app"
 }
