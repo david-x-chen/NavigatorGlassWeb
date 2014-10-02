@@ -9,7 +9,8 @@ angular
   'ngSanitize',
   'ngTouch',
   'bootstrap.tabset',
-  'ui.ace'
+  'ui.ace',
+  'config'
   ])
 .config(function ($routeProvider) {
   $routeProvider

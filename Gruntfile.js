@@ -63,6 +63,60 @@ module.exports = function (grunt) {
       }
     },
 
+    ngconstant: {
+      // Options for all targets
+      options: {
+        space: '  ',
+        wrap: '"use strict";\n\n {%= __ngModule %}',
+        name: 'config',
+      },
+      // Environment targets
+      dev: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'development',
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net/api '
+          }
+        }
+      },
+      local: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'development',
+            ApiUrl: 'http://localhost:12345/api '
+          }
+        }
+      },
+      stage: {
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'production',
+            ApiUrl: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/api'
+          }
+        }
+      },
+      prod: {
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'production',
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net/api'
+          }
+        }
+      }
+    },
+
     // The actual grunt server settings
     connect: {
       options: {
@@ -86,13 +140,57 @@ module.exports = function (grunt) {
           }
         }
       },
-      test: {
+      dev: {
+        options: {
+          port: 9000,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
+      local: {
+        options: {
+          port: 9000,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
+      stage: {
         options: {
           port: 9001,
           middleware: function (connect) {
             return [
               connect.static('.tmp'),
-              connect.static('test'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
+      prod: {
+        options: {
+          port: 9002,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
@@ -344,7 +442,7 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
-
+    
     // Test settings
     karma: {
       unit: {
@@ -375,6 +473,47 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
+  grunt.registerTask("serve:dev", [
+      'clean:server',
+      'ngconstant:dev',
+      'wiredep',
+      'concurrent:server',
+      'autoprefixer',
+      'connect:dev',
+      'watch'
+  ]);
+
+  grunt.registerTask("serve:local", [
+      'clean:server',
+      'ngconstant:local',
+      'wiredep',
+      'concurrent:server',
+      'autoprefixer',
+      'connect:local',
+      'watch'
+  ]);
+
+  grunt.registerTask("serve:stage", [
+      'clean:server',
+      'ngconstant:stage',
+      'wiredep',
+      'concurrent:server',
+      'autoprefixer',
+      'connect:stage',
+      'watch'
+  ]);
+
+  grunt.registerTask("serve:prod", [
+      'clean:server',
+      'ngconstant:prod',
+      'wiredep',
+      'concurrent:server',
+      'inject:dev',
+      'autoprefixer',
+      'connect:prod',
+      'watch'
+  ]);
+
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
@@ -385,6 +524,78 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
+
+  grunt.registerTask('build:dev', [
+    'clean:dist',
+    'ngconstant:dev',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
+
+  grunt.registerTask('build:local', [
+    'clean:dist',
+    'ngconstant:local',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
+
+  grunt.registerTask('build:stage', [
+    'clean:dist',
+    'ngconstant:stage',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
+
+   grunt.registerTask('build:prod', [
+    'clean:dist',
+    'ngconstant:prod',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
