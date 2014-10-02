@@ -78,7 +78,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'development',
-            ApiUrl: 'http://navigatorglassweb.cloudapp.net/api '
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net:80/api '
           }
         }
       },

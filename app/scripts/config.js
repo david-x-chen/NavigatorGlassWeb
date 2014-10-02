@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('ENV', {name:'development',ApiUrl:'http://localhost:12345 '})
+.constant('ENV', {name:'development',ApiUrl:'http://navigatorglassweb.cloudapp.net/api '})
 
 ;
