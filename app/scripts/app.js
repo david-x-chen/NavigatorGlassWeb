@@ -42,3 +42,7 @@ app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'test'
 });
+
+app.run(['authService', function (authService) {
+    authService.fillAuthData();
+}]);
