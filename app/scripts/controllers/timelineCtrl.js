@@ -133,10 +133,6 @@ angular.module('navigatorGlassProjectApp')
     $scope.loadTimelines = function(){
         TimelineService.getTimeline().success(function(result){
             $scope.timelines= result;
-            MenuItemService.getMenuItems().success(function(result){
-                $scope.menuItems= result;
-                console.log($scope.menuItems);
-            });
             for(var i=0; i< $scope.timelines.length ; i++)
             {
                 setTimelineItemOutput($scope.timelines[i]);

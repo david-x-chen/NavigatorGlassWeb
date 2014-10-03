@@ -9,6 +9,8 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -70,6 +72,7 @@
     <script src="bower_components/ace-builds/src-noconflict/mode-javascript.js"></script>
     <script src="bower_components/ace-builds/src-noconflict/mode-scheme.js"></script>
     <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -83,19 +86,32 @@
     <script src="scripts/controllers/loginCtrl.js"></script>
     <script src="scripts/controllers/locationsCtrl.js"></script>
     <script src="scripts/controllers/templatesCtrl.js"></script>
+    <script src="scripts/controllers/associateController.js"></script>
+    <script src="scripts/controllers/loginController.js"></script>
+    <script src="scripts/controllers/refreshController.js"></script>
+    <script src="scripts/controllers/tokensManagerController.js"></script>
+    <script src="scripts/controllers/headerController.js"></script>
+
 
 
     <script src="scripts/services/globalService.js"></script>
     <script src="scripts/services/httpService.js"></script>
+    <script src="scripts/services/authService.js"></script>
     <script src="scripts/services/timelineService.js"></script>
     <script src="scripts/services/locationService.js"></script>
     <script src="scripts/services/templateService.js"></script>
     <script src="scripts/services/menuItemService.js"></script>
+    <script src="scripts/services/authInterceptorService.js"></script>
+    <script src="scripts/services/tokensManagerService.js"></script>
 
 
     <script src="scripts/directives/pane.js"></script>
     <script src="scripts/directives/tabs.js"></script>
     <script src="scripts/directives/tabset.js"></script>
+
+    <script src="scripts/libs/loading-bar.min.js"></script>
+
+
     <script src="/scripts/config.js" />
 
 

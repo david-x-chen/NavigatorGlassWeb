@@ -6,7 +6,7 @@
             <div class="timelineItem" data-ng-repeat="timeline in timelines">
                 <div class="small">
                     <div class="smallcard">
-                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(timeline,false)" data-output="timeline.output" ng-class="{selected: timeline.id == selectedTimeline.id}">
+                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(timeline,false)" ng-bind-html="timeline.output" ng-class="{selected: timeline.id == selectedTimeline.id}">
                             <!--    {{timeline.output}}-->
                         </div>
                     </div>

@@ -88,23 +88,67 @@ module.exports = function (grunt) {
         },
         constants: {
           ENV: {
-            name: 'development',
+            name: 'local',
             ApiUrl: 'http://localhost:12345/api'
           }
         }
       },
       stage: {
         options: {
-          dest: '<%= yeoman.dist %>/scripts/config.js'
+          dest: '<%= yeoman.app %>/scripts/config.js'
         },
         constants: {
           ENV: {
-            name: 'production',
+            name: 'stage',
             ApiUrl: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/api'
           }
         }
       },
       prod: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'production',
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net/api'
+          }
+        }
+      },
+      bdev: {
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'development',
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net:80/api'
+          }
+        }
+      },
+      blocal: {
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'local',
+            ApiUrl: 'http://localhost:12345/api'
+          }
+        }
+      },
+      bstage: {
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'stage',
+            ApiUrl: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/api'
+          }
+        }
+      },
+      bprod: {
         options: {
           dest: '<%= yeoman.dist %>/scripts/config.js'
         },
@@ -406,7 +450,8 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
-            'fonts/*'
+            'fonts/*',
+            'external/*'
           ]
         }, {
           expand: true,
@@ -508,7 +553,6 @@ module.exports = function (grunt) {
       'ngconstant:prod',
       'wiredep',
       'concurrent:server',
-      'inject:dev',
       'autoprefixer',
       'connect:prod',
       'watch'
@@ -541,7 +585,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build:dev', [
     'clean:dist',
-    'ngconstant:dev',
+    'ngconstant:bdev',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -559,7 +603,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build:local', [
     'clean:dist',
-    'ngconstant:local',
+    'ngconstant:blocal',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -577,7 +621,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build:stage', [
     'clean:dist',
-    'ngconstant:stage',
+    'ngconstant:bstage',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -595,7 +639,7 @@ module.exports = function (grunt) {
 
    grunt.registerTask('build:prod', [
     'clean:dist',
-    'ngconstant:prod',
+    'ngconstant:bprod',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

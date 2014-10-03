@@ -12,7 +12,9 @@
     "angular-animate": "~1.2.0",
     "angular-touch": "~1.2.0",
     "angular-route": "~1.2.0",
-    "angular-ui-ace": "~0.1.1"
+    "angular-ui-ace": "~0.1.1",
+    "bootstrap-social": "~4.7.0",
+    "angular-local-storage": "~0.0.8"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
@@ -20,8 +22,15 @@
   },
   "overrides": {
     "ace-builds": {
-      "main": ["src-noconflict/ace.js", "src-noconflict/mode-javascript.js","src-noconflict/mode-scheme.js"]
+      "main": [
+        "src-noconflict/ace.js",
+        "src-noconflict/mode-javascript.js",
+        "src-noconflict/mode-scheme.js"
+      ]
     }
   },
-  "appPath": "app"
+  "appPath": "app",
+  "resolutions": {
+    "angular": "~1.2.0"
+  }
 }
