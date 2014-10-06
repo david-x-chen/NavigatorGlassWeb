@@ -35,10 +35,13 @@ app.config(function ($routeProvider) {
   .otherwise({
     redirectTo: '/'
   });
-});
-var serviceBase = 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/';
 
-app.constant('ngAuthSettings', {
-    apiServiceBaseUri: serviceBase,
-    clientId: 'test'
 });
+// var serviceBase = 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/';
+// var serviceBase = ENV.ApiUrl;
+// console.log(serviceBase);
+
+// app.constant('ngAuthSettings', {
+//     //apiServiceBaseUri: serviceBase,
+//     clientId: 'test'
+// });

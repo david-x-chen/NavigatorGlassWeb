@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.controller('loginController', function ($scope, $location, authService, ngAuthSettings, $cookies) {
+.controller('loginController', function ($scope, $location, authService, $cookies, Global) {
 
     $scope.loginData = {
         userName: "",
@@ -32,9 +32,9 @@ angular.module('navigatorGlassProjectApp')
         //                                                            + "&response_type=token&client_id=" + ngAuthSettings.clientId
         //                                                            + "&redirect_uri=" + redirectUri;
 
-        var externalProviderUrl = ngAuthSettings.apiServiceBaseUri + "Account/ExternalLoginCallback?"
+        var externalProviderUrl = Global.ApiUrl + "Account/ExternalLoginCallback?"
                                                                    +"returnUrl=" + $scope.encodeData(redirectUri) 
-                                                                   + "&client_id=" + ngAuthSettings.clientId;
+                                                                   + "&client_id=" + Global.clientId;
         console.log('I should be doing something');                                                          
         window.$windowScope = $scope;
 

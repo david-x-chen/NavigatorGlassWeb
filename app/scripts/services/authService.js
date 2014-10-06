@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.service('authService', function ($http, $q, localStorageService, ngAuthSettings) {
+.service('authService', function ($http, $q, localStorageService, Global) {
 
-    var serviceBase = ngAuthSettings.apiServiceBaseUri;
+    var serviceBase = Global.ApiUrl;
     var authServiceFactory = {};
 
     var authentication = {
@@ -32,7 +32,7 @@ angular.module('navigatorGlassProjectApp')
 
         var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
         if (loginData.useRefreshTokens) {
-            data = data + "&client_id=" + ngAuthSettings.clientId;
+            data = data + "&client_id=" + Global.clientId;
         }
 
         var deferred = $q.defer();
@@ -101,7 +101,7 @@ angular.module('navigatorGlassProjectApp')
 
             if (authData.useRefreshTokens) {
 
-                var data = "grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=" + ngAuthSettings.clientId;
+                var data = "grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=" + Global.clientId;
 
                 localStorageService.remove('authorizationData');
 

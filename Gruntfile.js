@@ -115,6 +115,17 @@ module.exports = function (grunt) {
           }
         }
       },
+      mock: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'production',
+            ApiUrl: 'http://navigatormock.cloudapp.net/api'
+          }
+        }
+      },
       bdev: {
         options: {
           dest: '<%= yeoman.dist %>/scripts/config.js'
@@ -156,6 +167,17 @@ module.exports = function (grunt) {
           ENV: {
             name: 'production',
             ApiUrl: 'http://navigatorglassweb.cloudapp.net/api'
+          }
+        }
+      },
+      bmock: {
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'production',
+            ApiUrl: 'http://navigatormock.cloudapp.net/api'
           }
         }
       }
@@ -232,6 +254,21 @@ module.exports = function (grunt) {
       prod: {
         options: {
           port: 9002,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
+      mock: {
+        options: {
+          port: 9000,
           middleware: function (connect) {
             return [
               connect.static('.tmp'),
@@ -558,6 +595,16 @@ module.exports = function (grunt) {
       'watch'
   ]);
 
+  grunt.registerTask("serve:mock", [
+      'clean:server',
+      'ngconstant:mock',
+      'wiredep',
+      'concurrent:server',
+      'autoprefixer',
+      'connect:mock',
+      'watch'
+  ]);
+
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
@@ -640,6 +687,24 @@ module.exports = function (grunt) {
    grunt.registerTask('build:prod', [
     'clean:dist',
     'ngconstant:bprod',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
+
+   grunt.registerTask('build:mock', [
+    'clean:dist',
+    'ngconstant:bmock',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

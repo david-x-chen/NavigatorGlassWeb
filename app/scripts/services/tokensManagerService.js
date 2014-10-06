@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.service('tokensManagerService', function ($http,ngAuthSettings) {
+.service('tokensManagerService', function ($http,Global) {
 
-    var serviceBase = ngAuthSettings.apiServiceBaseUri;
+    var serviceBase = Global.ApiUrl;
+    //ngAuthSettings.apiServiceBaseUri;
     
     var tokenManagerServiceFactory = {};
 
