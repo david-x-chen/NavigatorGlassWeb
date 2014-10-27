@@ -89,7 +89,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'local',
-            ApiUrl: 'http://localhost:12345/api'
+            ApiUrl: 'http://localhost:43868/api'
           }
         }
       },
@@ -144,7 +144,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'local',
-            ApiUrl: 'http://localhost:12345/api'
+            ApiUrl: 'http://localhost:43868/api'
           }
         }
       },
@@ -498,6 +498,11 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: 'bower_components/bootstrap/dist',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: 'bower_components/font-awesome',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }]
