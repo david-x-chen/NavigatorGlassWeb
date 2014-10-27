@@ -15,7 +15,6 @@ angular.module('navigatorGlassProjectApp')
     $scope.login = function () {
 
         authService.login($scope.loginData).then(function (response) {
-            console.log('-------------');
             $location.path('/timeline');
 
         },
@@ -32,10 +31,9 @@ angular.module('navigatorGlassProjectApp')
         //                                                            + "&response_type=token&client_id=" + ngAuthSettings.clientId
         //                                                            + "&redirect_uri=" + redirectUri;
 
-        var externalProviderUrl = Global.ApiUrl + "Account/ExternalLoginCallback?"
+        var externalProviderUrl = Global.ApiUrl + "/Account/ExternalLoginCallback?"
                                                                    +"returnUrl=" + $scope.encodeData(redirectUri) 
                                                                    + "&client_id=" + Global.clientId;
-        console.log('I should be doing something');                                                          
         window.$windowScope = $scope;
 
         var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
@@ -53,7 +51,6 @@ angular.module('navigatorGlassProjectApp')
             var userId = $cookies['csrftoken'];
             userId = $cookies['userId'];
             userId = $cookies.userId;
-            console.log('!!!!!!!!!!!');
             authService.obtainAccessToken(fragment).then(function (response) {
                 $location.path('/timeline');
             });
