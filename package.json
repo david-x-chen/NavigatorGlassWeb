@@ -1,7 +1,9 @@
 {
-  "name": "navigatorglassproject",
-  "version": "0.0.0",
-  "dependencies": {},
+  "name": "navigatorglass",
+  "version": "0.0.1",
+  "dependencies": {
+	"express": "latest"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",

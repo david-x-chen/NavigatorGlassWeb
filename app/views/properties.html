@@ -2,100 +2,91 @@
     <div class=" row propContent">
         <div class="col-md-6">
             <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Id: </label><span class="col-md-9">{{selectedTimeline.id}}</span>
-            </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 propLabel">Id: </label><span class="col-md-9">{{selectedTimeline.id}}</span>
+                </div>
             </form>
             <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Title:</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control propSize" ng-model="selectedTimeline.title" ng-minlength="5" ng-maxlength="20" data-name="Title" />
+                <div class="form-group">
+                    <label class="control-label col-md-3 propLabel">Title:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control propSize" ng-model="selectedTimeline.title" ng-minlength="5" ng-maxlength="20" data-name="Title" />
+                    </div>
+                </div>
+            </form>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-md-3 propLabel">Latitude:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control propSize" ng-model="selectedTimeline.location.latitude" data-name="Latitude" data-datatype="float" />
+                    </div>
+                </div>
+                <form class="form-horizontal">
+                    <div class="form-group">        
+                        <label class="control-label col-md-3 propLabel">Longitude:</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control propSize" ng-model="selectedTimeline.location.longitude" data-name="Longitude" data-datatype="float" />
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 propLabel">Address:</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control propSize" ng-model="selectedTimeline.location.address" ng-minlength="5" ng-maxlength="20" data-name="Address" data-datatype="float" />
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 propLabel">Display Time:</label>
+                        <input data-datetime-picker-control="selectedTimeline.displayTime" data-name="Display Time" />
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 propLabel">Source Item Id:</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control propSize" ng-model="selectedTimeline.sourceItemId" data-name="Source Item Id" title="Source Item Id" />
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 propLabel">Canonical Url:</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control propSize" ng-model="selectedTimeline.canonicalUrl" data-name="Canonical Url" title="Canonical Url" />
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 propLabel">Etag</label>
+                        <div class="col-md-9">
+                            <span>{{selectedTimeline.etag}}</span>
+                        </div>
+                    </div>
+                    <form class="form-horizontal">
+                        <input data-checkbox-control="selectedTimeline.isPinned" data-name="Pinned" image />
+                    </form>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 propLabel">Created</label>
+                            <div class="col-md-9">
+                                <input data-label-control="selectedTimeline.created | dateConverter" data-name="Created" />
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 propLabel">Updated</label>
+                            <div class="col-md-9">
+                                <span data-label-control="selectedTimeline.updated | dateConverter" data-name="Updated"></span>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            </form>
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Latitude:</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control propSize" ng-model="selectedTimeline.location.latitude" data-name="Latitude" data-datatype="float" />
-                </div>
-            </div>
-            <form class="form-horizontal">
-            <div class="form-group">        
-                <label class="control-label col-md-3 propLabel">Longitude:</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control propSize" ng-model="selectedTimeline.location.longitude" data-name="Longitude" data-datatype="float" />
-                </div>
-            </div>
-            </form>
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Address:</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control propSize" ng-model="selectedTimeline.location.address" ng-minlength="5" ng-maxlength="20" data-name="Address" data-datatype="float" />
-                </div>
-            </div>
-            </form>
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Display Time:</label>
-                <input data-datetime-picker-control="selectedTimeline.displayTime" data-name="Display Time" />
-            </div>
-            </form>
         </div>
-        <div class="col-md-6">
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Source Item Id:</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control propSize" ng-model="selectedTimeline.sourceItemId" data-name="Source Item Id" title="Source Item Id" />
-                </div>
-            </div>
-            </form>
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Canonical Url:</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control propSize" ng-model="selectedTimeline.canonicalUrl" data-name="Canonical Url" title="Canonical Url" />
-                </div>
-            </div>
-            </form>
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Etag</label>
-                <div class="col-md-9">
-                    <span>{{selectedTimeline.etag}}</span>
-                </div>
-            </div>
-            </form>
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Kind</label>
-                <div class="col-md-9">
-                    <span>{{selectedTimeline.kind}}</span>
-                </div>
-            </div>
-            </form>
-            <form class="form-horizontal">
-            <input data-checkbox-control="selectedTimeline.isPinned" data-name="Pinned" image />
-            </form>
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Created</label>
-                <div class="col-md-9">
-                    <input data-label-control="selectedTimeline.created | dateConverter" data-name="Created" />
-                </div>
-            </div>
-            </form>
-            <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-3 propLabel">Updated</label>
-                <div class="col-md-9">
-                    <span data-label-control="selectedTimeline.updated | dateConverter" data-name="Updated"></span>
-                </div>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>

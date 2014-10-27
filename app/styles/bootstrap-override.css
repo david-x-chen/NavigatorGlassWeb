@@ -75,12 +75,13 @@
 
 .date-time table thead tr th { font-weight: bold;}
 
-.control-label {
+.form-horizontal .control-label {
     font-size: 11px;
     height: 27px;
     line-height: 27px;
-    padding-top: 0px !important;
+    padding-top: 0px;
     white-space: nowrap;
+    text-align: left;
 }
 
 .form-group {
