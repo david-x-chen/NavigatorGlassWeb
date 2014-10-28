@@ -11,7 +11,14 @@ angular.module('navigatorGlassProjectApp')
     $scope.tabName="HTML";
 
     $scope.selectedTimeline = {
-        title: "",
+        id: '0000000000001',
+        title: "Placeholder title",
+        location: {
+            latitude: 18.432875453,
+            longitude: 26.54396540,
+            address: 'Macului Street nr. 25'
+        },
+        displayTime: new Date(),
         output: "",
         newItem: true,
         statusMessage: "",
@@ -22,6 +29,23 @@ angular.module('navigatorGlassProjectApp')
         state: "",
         isDirty: false
     };
+
+    $scope.datepicker = {
+        opened: false,
+        format: 'dd-MMMM-yyyy',
+        dateOptions: {
+            formatYear: 'yy',
+            startingDay: 1
+        }
+    };
+
+    $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.datepicker.opened = true;
+    };
+
     /*
     Method that creates the state for the TimelineItem or TemplateItem
     */
@@ -84,7 +108,6 @@ angular.module('navigatorGlassProjectApp')
     */
     $scope.previewTimeline = function (timeline, newItem) {
         timeline = setTimelineItemOutput(timeline);
-        console.log(timeline);
         $scope.selectedTimeline = timeline;
         $scope.selectedTimeline.newItem = newItem;
         $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
@@ -138,7 +161,7 @@ angular.module('navigatorGlassProjectApp')
                 setTimelineItemOutput($scope.timelines[i]);
             }
         });
-};
-$scope.loadTimelines();
+    };
+    $scope.loadTimelines();
 
 });

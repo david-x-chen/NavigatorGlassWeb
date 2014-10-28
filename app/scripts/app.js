@@ -10,9 +10,11 @@ var app = angular
   'ngTouch',
   'bootstrap.tabset',
   'ui.ace',
+  'ui.bootstrap',
   'config',
   'LocalStorageModule',
-  'ngCookies'
+  'ngCookies',
+  'navigatorGlassMock'
   ]);
 app.config(function ($routeProvider) {
   $routeProvider

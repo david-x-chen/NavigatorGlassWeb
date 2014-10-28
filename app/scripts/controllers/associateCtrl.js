@@ -1,6 +1,6 @@
 'use strict';
 angular.module('navigatorGlassProjectApp')
-  .controller('associateController', function ($scope, $location,$timeout, authService) {
+  .controller('associateCtrl', function ($scope, $location,$timeout, authService) {
 
     $scope.savedSuccessfully = false;
     $scope.message = "";
@@ -12,7 +12,6 @@ angular.module('navigatorGlassProjectApp')
     };
 
     $scope.registerExternal = function () {
-
         authService.registerExternal($scope.registerData).then(function (response) {
 
             $scope.savedSuccessfully = true;

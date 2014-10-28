@@ -1,6 +1,6 @@
 'use strict';
 angular.module('navigatorGlassProjectApp')
-.controller('headerController', function ($scope, $location, authService) {
+.controller('headerCtrl', function ($scope, $location, authService) {
 
 $scope.logOut = function () {
         authService.logOut();

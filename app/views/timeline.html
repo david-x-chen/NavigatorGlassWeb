@@ -21,25 +21,25 @@
                         </div>
                     </div>
                     <div class="col-md-6 sourceContainer codeEditor">
-                         <tabs>
+                         <tabitem>
                             <pane heading="{{tabName}}">
                                 <div class="sourceBox" data-ui-ace="aceOption" data-ng-model="selectedTimeline.output"></div>
                             </pane>
                             <pane heading="JSON">
                                 <div class="jsonRep" data-ui-ace="aceOption" data-ng-model="selectedTimeline.jsonRepresentation"></div>
                             </pane>
-                        </tabs>
+                        </tabitem>
                     </div>
                 </div>
 
                 <div class="row propertiesContent">
-                    <div class="col-md-12">         
+                    <div class="col-md-12">
                         <div class="row">
                             <div class="panel panel-default">
                                 <div class="panel-body propList">
-                                    <tabs>
+                                    <tabitem>
                                         <pane heading="Properties">
-                                            <div data-ng-include="" data-src="'./views/properties.html'"></div>
+                                            <!-- <div data-ng-include="" data-src="'./views/properties.html'"></div> -->
                                             <div data-ng-include="" data-src="'./views/properties.tpl.html'"></div>
                                         </pane>
                                         <pane heading="Menu Items">
@@ -48,7 +48,7 @@
                                         <pane heading="Speakable Text">
                                             <div data-ng-include="" data-src="'./views/speakabletext.html'"></div>
                                         </pane>
-                                    </tabs>
+                                    </tabitem>
                                 </div>
                             </div>
                         </div>
@@ -60,12 +60,12 @@
     <div class="row">
         <div class="panel panel-default timeline-item">
             <div class="panel-body">
-                <tabset>
-                    <tab title="Timeline" template-url="./views/timelineTab.html"></tab>
-                    <tab title="Locations" template-url="./views/locationsTab.html"></tab>
-                    <tab title="Templates" template-url="./views/templateTab.html"></tab>
-                    <tab title="Subscription" template-url="./views/subscriptionTab.html"></tab>
-                </tabset>
+                <tabsetitem>
+                    <tabi title="Timeline" template-url="./views/timelineTab.html"></tabi>
+                    <tabi title="Locations" template-url="./views/locationsTab.html"></tabi>
+                    <tabi title="Templates" template-url="./views/templateTab.html"></tabi>
+                    <tabi title="Subscription" template-url="./views/subscriptionTab.html"></tabi>
+                </tabsetitem>
             </div>
         </div>
     </div>

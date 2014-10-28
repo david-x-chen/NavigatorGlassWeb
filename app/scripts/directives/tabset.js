@@ -3,7 +3,7 @@
 Directive needed by bootstrap ui to create tabs elements.
 */
 angular.module('bootstrap.tabset', [])
-.directive('tabset', function () {
+.directive('tabsetitem', function () {
   return {
     restrict: 'E',
     replace: true,
@@ -42,11 +42,11 @@ angular.module('bootstrap.tabset', [])
     '</div>'
   };
 })
-.directive('tab', function () {
+.directive('tabi', function () {
   return {
     restrict: 'E',
     replace: true,
-    require: '^tabset',
+    require: '^tabsetitem',
     scope: {
       title: '@',
       templateUrl: '@'

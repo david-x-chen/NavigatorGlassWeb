@@ -5,7 +5,7 @@ Directive that creates pane elements inside tab elements.
 angular.module('navigatorGlassProjectApp')
 .directive('pane', function() {
     return {
-        require: '^tabs',
+        require: '^tabitem',
         restrict: 'E',
         transclude: true,
         scope: { heading: '@' },

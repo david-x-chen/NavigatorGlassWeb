@@ -3,7 +3,7 @@
 Directive that creates tabs elements.
 */
 angular.module('navigatorGlassProjectApp')
-.directive('tabs', function() {
+.directive('tabitem', function() {
     return {
         restrict: 'E',
         transclude: true,
