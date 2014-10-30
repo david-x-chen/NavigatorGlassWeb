@@ -78,7 +78,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'development',
-            ApiUrl: 'http://navigatorglassweb.cloudapp.net:80/api'
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net:80/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -89,7 +90,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'local',
-            ApiUrl: 'http://localhost:43868/api'
+            ApiUrl: 'http://localhost:43868/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -100,7 +102,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'stage',
-            ApiUrl: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/api'
+            ApiUrl: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -111,7 +114,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            ApiUrl: 'http://navigatorglassweb.cloudapp.net/api'
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -122,7 +126,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            ApiUrl: 'http://navigatormock.cloudapp.net/api'
+            ApiUrl: 'http://navigatormock.cloudapp.net/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -133,7 +138,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'development',
-            ApiUrl: 'http://navigatorglassweb.cloudapp.net:80/api'
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net:80/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -144,7 +150,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'local',
-            ApiUrl: 'http://localhost:43868/api'
+            ApiUrl: 'http://localhost:43868/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -155,7 +162,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'stage',
-            ApiUrl: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/api'
+            ApiUrl: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -166,7 +174,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            ApiUrl: 'http://navigatorglassweb.cloudapp.net/api'
+            ApiUrl: 'http://navigatorglassweb.cloudapp.net/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       },
@@ -177,7 +186,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            ApiUrl: 'http://navigatormock.cloudapp.net/api'
+            ApiUrl: 'http://navigatormock.cloudapp.net/api',
+            oAuth: 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net'
           }
         }
       }

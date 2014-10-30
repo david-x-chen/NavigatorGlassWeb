@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.controller('TimelineCtrl',function(HttpService,$sce,$scope,TimelineService,LocationService,MenuItemService) {
+.controller('TimelineCtrl',function(HttpService, $sce, $scope, TimelineService, LocationService, MenuItemService) {
     var allowedJsonKeyProperty = ["id", "etag", "text", "html", "created", "updated", "menuItems", "speakableText"];
     var guidConstant = "00000000-0000-0000-0000-000000000000";
     
@@ -9,26 +9,9 @@ angular.module('navigatorGlassProjectApp')
     $scope.mode = $scope.modes[0];
     $scope.timelines = [];
     $scope.tabName="HTML";
+    $scope.state = null;
 
-    $scope.selectedTimeline = {
-        id: '0000000000001',
-        title: "Placeholder title",
-        location: {
-            latitude: 18.432875453,
-            longitude: 26.54396540,
-            address: 'Macului Street nr. 25'
-        },
-        displayTime: new Date(),
-        output: "",
-        newItem: true,
-        statusMessage: "",
-        statusClass: "",
-        jsonRepresentation: "",
-        speakableText: "",
-        initState: "",
-        state: "",
-        isDirty: false
-    };
+    $scope.selectedTimeline = {};
 
     $scope.datepicker = {
         opened: false,
@@ -75,6 +58,7 @@ angular.module('navigatorGlassProjectApp')
 
         return JSON.stringify(temporaryState, replacer);
     }
+
     /*
     Method that creates a JSON representation of a timeline or template.
     */
@@ -103,12 +87,14 @@ angular.module('navigatorGlassProjectApp')
         var str = JSON.stringify(jsonobj, null, '\t');
         $scope.selectedTimeline.jsonRepresentation = str;
     }
+
     /*
     Method that creates a preview of the Timeline.
     */
     $scope.previewTimeline = function (timeline, newItem) {
         timeline = setTimelineItemOutput(timeline);
         $scope.selectedTimeline = timeline;
+        $scope.oldItem = angular.copy(timeline);
         $scope.selectedTimeline.newItem = newItem;
         $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
         createJsonRepresentation($scope.selectedTimeline);
@@ -117,10 +103,14 @@ angular.module('navigatorGlassProjectApp')
             $scope.selectedTimeline.output = $scope.selectedTimeline.output;
             $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
         }
+
         if ($scope.selectedTimeline.id != guidConstant) {
             $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
         }
+
+        updateState();
     };
+
     /*
     Method that inputs a TimelineItem or TemplateItem and returns it as HTML or Text
     */
@@ -131,11 +121,40 @@ angular.module('navigatorGlassProjectApp')
             $scope.tabName="HTML";
         } else {
             item.output = item.textState = item.text;
-            console.log(item.output);
             $scope.tabName="TEXT"
         }
         return item;
     }
+
+    $scope.getTime = function(str) {
+        return (str ? new Date(str).toGMTString() : '');
+    };
+
+    $scope.hasProperty = function(property) {
+        if ($scope.selectedTimeline && $scope.selectedTimeline.menuItems) {
+            for (var i = 0; i < $scope.selectedTimeline.menuItems.length; i++) {
+                if ($scope.selectedTimeline.menuItems[i].id == property.id) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    };
+
+    $scope.switchProperty = function(property) {
+        if ($scope.selectedTimeline && $scope.selectedTimeline.menuItems) {
+            for (var i = 0; i < $scope.selectedTimeline.menuItems.length; i++) {
+                if (property.id == $scope.selectedTimeline.menuItems[i].id) {
+                    $scope.selectedTimeline.menuItems.splice(i, 1);
+                    return;
+                }
+            }
+
+            $scope.selectedTimeline.menuItems.push(property);
+        }
+    };
+
     $scope.aceOption = {
         mode: $scope.mode.toLowerCase(),
         onLoad: function (ace) {
@@ -145,23 +164,95 @@ angular.module('navigatorGlassProjectApp')
                     maxLines: Infinity
                 });
             };
-
         }
     };
+
+    $scope.getUpdatedCss = function() {
+        return ($scope.selectedTimeline && 
+            $scope.selectedTimeline.created != $scope.selectedTimeline.updated ? 'color: #0099CC' : '');
+    };
+
+    $scope.onUpdate = function() {
+        if ($scope.selectedTimeline) {
+            TimelineService.updateCard($scope.selectedTimeline).success(function(result) {
+                for (var i = 0; i < $scope.timelines.length; i++) {
+                    if (result.id == $scope.timelines[i].id) {
+                        $scope.timelines[i] = result;
+                        $scope.selectedTimeline = $scope.timelines[i];
+                        setTimelineItemOutput($scope.timelines[i]);
+                        return;
+                    }
+                }
+            });
+        }
+    };
+
+    $scope.onDelete = function() {
+        if ($scope.selectedTimeline) {
+            TimelineService.deleteCard($scope.selectedTimeline.id).success(function() {
+                for (var i = 0; i < $scope.timelines.length; i++) {
+                    if ($scope.selectedTimeline.id == $scope.timelines[i].id) {
+                        $scope.timelines.splice(i, 1);
+                        $scope.selectedTimeline = null;
+                        return;
+                    }
+                }
+            });
+        }
+    };
+
+    $scope.onInsert = function() {
+        if ($scope.selectedTimeline) {
+            TimelineService.createCard($scope.selectedTimeline).success(function(result) {
+                $scope.timelines.push(result);
+                alert("Done");
+            });
+        }
+    };
+
+    function updateState() {
+        if ($scope.selectedTimeline) {
+            if ($scope.selectedTimeline.created != null) {
+                $scope.state = "timeline";
+            } else {
+                $scope.state = "template";
+            }
+        }
+    };
+
     /*
     Method that uses the TimelineService to retrieve Timelines information using
     the API.After the information is retrieved with success it will output the 
     TimelineItems.
     */
-    $scope.loadTimelines = function(){
+    $scope.loadTimelines = function() {
         TimelineService.getTimeline().success(function(result){
             $scope.timelines= result;
-            for(var i=0; i< $scope.timelines.length ; i++)
-            {
+            for(var i=0; i< $scope.timelines.length ; i++) {
                 setTimelineItemOutput($scope.timelines[i]);
             }
         });
     };
-    $scope.loadTimelines();
 
+    $scope.loadMenuItems = function() {
+        MenuItemService.getMenuItems().success(function(result) {
+            $scope.menuItems = result;
+            $scope.menuItemBatches = [];
+
+            for (var i = 0; i < result.length; i++) {
+                if (i % 5 == 0) {
+                    $scope.menuItemBatches.push([]);
+                }
+
+                $scope.menuItemBatches[$scope.menuItemBatches.length - 1].push(result[i]);
+            }
+        });
+    };
+
+    function init() {
+        $scope.loadTimelines();
+        $scope.loadMenuItems();
+    }
+
+    init();
 });

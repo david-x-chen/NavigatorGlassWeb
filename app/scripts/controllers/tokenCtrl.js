@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.controller('tokensManagerController',function ($scope, tokensManagerService) {
+.controller('TokenCtrl',function ($scope, tokensManagerService) {
 
     $scope.refreshTokens = [];
 

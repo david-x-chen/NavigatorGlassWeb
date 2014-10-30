@@ -1,40 +1,58 @@
-    'use strict';
+'use strict';
 
-    angular.module('navigatorGlassProjectApp')
-    .controller('LoginCtrl',function(HttpService,$scope){
-        var clientId = '126018090035.apps.googleusercontent.com';
-        var apiKey = 'AIzaSyAzVOX38TBgREYPddfnxCJFPfZhN9uYODw';
-        var scopes = 'https://www.googleapis.com/auth/glass.timeline';
+angular.module('navigatorGlassProjectApp')
+.controller('LoginCtrl', function ($scope, $location, authService, $cookies, Global) {
 
-        window.handleClientLoad = function() {
-            gapi.client.setApiKey(apiKey);
-            window.setTimeout(checkAuth,1);
-        }
+    $scope.loginData = {
+        userName: "",
+        password: "",
+        useRefreshTokens: false
+    };
 
-        function checkAuth() {
-            gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
-        }
 
-        function handleAuthResult(authResult) {
-            var authorizeButton = document.getElementById('authorize-button');
-            if (authResult && !authResult.error) {
-                authorizeButton.style.visibility = 'hidden';
-                console.log(authResult);
-                var xhr = new XMLHttpRequest();
-                var oauthToken = gapi.auth.getToken();
-                xhr.open('GET',
-                    'http://navigatorglassweb.cloudapp.net:80/api/TimeLine');
-                xhr.setRequestHeader('Authorization',
-                    'Bearer ' + oauthToken.access_token);
-                xhr.send();
-            } else {
-                authorizeButton.style.visibility = '';
-                authorizeButton.onclick = handleAuthClick;
-            }
-        }
+    $scope.message = "";
 
-        function handleAuthClick(event) {
-            gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
-            return false;
-        }
-    });
+    $scope.login = function () {
+
+        authService.login($scope.loginData).then(function (response) {
+            $location.path('/timeline');
+
+        },
+         function (err) {
+             $scope.message = err.error_description;
+         });
+    };
+
+    $scope.authExternalProvider = function (provider) {
+        var redirectUri = location.protocol + '//' + location.host + '/authComplete.html';
+
+        //var externalProviderUrl = ngAuthSettings.apiServiceBaseUri + "Account/ExternalLoginCallback?provider=" + provider
+        //                                                            + "&response_type=token&client_id=" + ngAuthSettings.clientId
+        //                                                            + "&redirect_uri=" + redirectUri;
+
+        var externalProviderUrl = Global.ApiUrl + "/Account/ExternalLoginCallback?"
+                                                                   +"returnUrl=" + $scope.encodeData(redirectUri) 
+                                                                   + "&client_id=" + Global.clientId;
+        window.$windowScope = $scope;
+
+        var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
+    };
+    
+    $scope.encodeData = function(data){
+            return encodeURIComponent(data).replace(/\-/g, "%2D").replace(/\_/g, "%5F").replace(/\./g, "%2E").replace(/\!/g, "%21").replace(/\~/g, "%7E").replace(/\*/g, "%2A").replace(/\'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29");
+    };
+
+    $scope.authCompletedCB = function (fragment) {
+
+        $scope.$apply(function () {
+
+            //var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
+            var userId = $cookies['csrftoken'];
+            userId = $cookies['userId'];
+            userId = $cookies.userId;
+            authService.obtainAccessToken(fragment).then(function (response) {
+                $location.path('/timeline');
+            });
+        });
+    }
+});

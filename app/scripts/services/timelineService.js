@@ -7,6 +7,18 @@ angular.module('navigatorGlassProjectApp')
     return{
         getTimeline: function() {
             return HttpService.handle('GET','/Timeline');
+        },
+
+        updateCard: function(card) {
+            return HttpService.handle('PUT', '/Timeline', card);
+        },
+
+        deleteCard: function(id) {
+            return HttpService.handle('DELETE', '/Timeline/' + id);
+        },
+
+        createCard: function(card) {
+            return HttpService.handle('POST', '/Timeline', card);
         }
     };
 });

@@ -69,7 +69,6 @@ angular.module('navigatorGlassProjectApp')
         authentication.useRefreshTokens = false;
         var data = '';
 
-        console.log('I am out!!!!!!!');
         //$http.post(serviceBase + 'Account/Logoff', data, { withCredentials: true, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
             
         //    deferred.resolve(response);
@@ -83,7 +82,6 @@ angular.module('navigatorGlassProjectApp')
     var fillAuthData = function () {
 
         var authData = localStorageService.get('authorizationData');
-        console.log('!!!!!!!!~~',authData);
         if (authData) {
             authentication.isAuth = true;
             authentication.userName = authData.userName;

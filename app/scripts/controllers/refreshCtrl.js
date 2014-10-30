@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.controller('refreshController',  function ($scope, $location, authService) {
+.controller('RefreshCtrl',  function ($scope, $location, authService) {
 
     $scope.authentication = authService.authentication;
     $scope.tokenRefreshed = false;

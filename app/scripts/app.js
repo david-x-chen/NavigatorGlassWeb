@@ -24,7 +24,7 @@ app.config(function ($routeProvider) {
   })
   .when('/login', {
     templateUrl: 'views/login.html',
-    controller: 'loginController'
+    controller: 'LoginCtrl'
   })
   .when('/timeline', {
     templateUrl: 'views/timeline.html',
@@ -32,7 +32,7 @@ app.config(function ($routeProvider) {
   })
   .when('/signup', {
     templateUrl: 'views/signup.html',
-    controller: 'loginController'
+    controller: 'AuthCtrl'
   })
   .otherwise({
     redirectTo: '/'
