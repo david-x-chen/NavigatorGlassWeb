@@ -12,6 +12,15 @@ angular.module('navigatorGlassProjectApp')
                 data: data,
                 params: params
             });
+        },
+
+        mockHandle: function(method, url, data, params) {
+            return $http({
+                method: method,
+                url: 'http://navigatormock.cloudapp.net/api' + url,
+                data: data,
+                params: params
+            });
         }
     };
 });

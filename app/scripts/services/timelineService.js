@@ -6,19 +6,19 @@ angular.module('navigatorGlassProjectApp')
 .service('TimelineService', function(HttpService) {
     return{
         getTimeline: function() {
-            return HttpService.handle('GET','/Timeline');
+            return HttpService.mockHandle('GET','/timeline');
         },
 
         updateCard: function(card) {
-            return HttpService.handle('PUT', '/Timeline', card);
+            return HttpService.mockHandle('PUT', '/timeline', card);
         },
 
         deleteCard: function(id) {
-            return HttpService.handle('DELETE', '/Timeline/' + id);
+            return HttpService.mockHandle('DELETE', '/timeline/' + id);
         },
 
         createCard: function(card) {
-            return HttpService.handle('POST', '/Timeline', card);
+            return HttpService.mockHandle('POST', '/timeline', card);
         }
     };
 });
