@@ -22,15 +22,17 @@
                 <input type="text" class="form-control col-md-9" ng-model="selectedTimeline.location.address">
             </div>
             <div class="form-group" ng-show="state == 'template' ">
-                <label class="control-label col-md-3" style="margin-top: 24px;">Display Time</label>
+                <label class="control-label col-md-3" style="margin-top: 24px;">Delivery Time</label>
                 <div class="col-md-9 time-picker">
+                   
                     <p class="input-group col-md-5" style="float: left; margin-top: 24px;">
-                        <input type="text" class="form-control" datepicker-popup="{{datepicker.format}}" ng-model="selectedTimeline.displayTime" is-open="datepicker.opened" datepicker-options="datepicker.dateOptions" ng-required="false" close-text="Close" />
+                        <input type="text" class="form-control" datepicker-popup="{{datepicker.format}}" ng-model="selectedTimeline.deliveryTime" is-open="datepicker.opened" datepicker-options="datepicker.dateOptions" ng-required="false" close-text="Close" />
                         <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                         </span>
                     </p>
-                    <timepicker class="col-md-3" ng-model="selectedTimeline.displayTime" show-meridian="true"></timepicker>
+
+                    <timepicker class="col-md-3" ng-model="selectedTimeline.deliveryTime" show-meridian="true"></timepicker>
             </div>
         </div>
     </form>
