@@ -10,6 +10,7 @@ Service that does initialize some parameters like ApiUrl and the Url.
         global.ApiUrl = ENV.ApiUrl;
         global.Url = ENV.Url;
         global.clientId = 'test';
+        global.oAuth = ENV.oAuth;
       } else {
         global.ApiUrl = 'http://navigatorglassweb.cloudapp.net:80/api';
         global.Url = 'http://navigatorglassweb.cloudapp.net';

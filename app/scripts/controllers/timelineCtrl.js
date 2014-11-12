@@ -8,10 +8,15 @@ angular.module('navigatorGlassProjectApp')
     $scope.modes = ['Scheme', 'XML', 'Javascript', 'Html'];
     $scope.mode = $scope.modes[0];
     $scope.timelines = [];
+    $scope.albums = [];
     $scope.tabName="HTML";
     $scope.state = null;
 
     $scope.selectedTimeline = {};
+    $scope.selectedAlbum = null;
+
+    $scope.hasStatus = false;
+    $scope.statusMessage = "";
 
     $scope.datepicker = {
         opened: false,
@@ -97,6 +102,7 @@ angular.module('navigatorGlassProjectApp')
         $scope.oldItem = angular.copy(timeline);
         $scope.selectedTimeline.newItem = newItem;
         $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
+        $scope.updateCurrentBundle();
         createJsonRepresentation($scope.selectedTimeline);
 
         if (newItem) {
@@ -155,6 +161,28 @@ angular.module('navigatorGlassProjectApp')
         }
     };
 
+    $scope.updateCurrentBundle = function() {
+        if ($scope.selectedTimeline && $scope.albums.length > 0) {
+            if ($scope.selectedTimeline.bundleId) {
+                for (var i = 0; i < $scope.albums.length; i++) {
+                    if ($scope.albums[i].bundleId == $scope.selectedTimeline.bundleId) {
+                        $scope.selectedAlbum = $scope.albums[i];
+                        return;
+                    }
+                }
+            } else {
+                $scope.selectedAlbum = null;
+            }
+        }
+    };
+
+    $scope.updateBundleId = function(selectedAlbum) {
+        $scope.selectedAlbum = selectedAlbum;
+        if ($scope.selectedTimeline) {
+            $scope.selectedTimeline.bundleId = $scope.selectedAlbum.bundleId;
+        }
+    };
+
     $scope.aceOption = {
         mode: $scope.mode.toLowerCase(),
         onLoad: function (ace) {
@@ -175,13 +203,15 @@ angular.module('navigatorGlassProjectApp')
     $scope.onUpdate = function() {
         if ($scope.selectedTimeline) {
             TimelineService.updateCard($scope.selectedTimeline).success(function(result) {
-                for (var i = 0; i < $scope.timelines.length; i++) {
-                    if (result.id == $scope.timelines[i].id) {
-                        $scope.timelines[i] = result;
-                        $scope.selectedTimeline = $scope.timelines[i];
-                        setTimelineItemOutput($scope.timelines[i]);
-                        return;
-                    }
+                $scope.loadTimelines();
+                $scope.showUpdateMessage();
+            }).error(function(data, status) {
+                if (status == 403) {
+                    $scope.showForbidden();
+                } if (status == 0) {
+                    $scope.showTimeout();
+                } else {
+                    $scope.showError();
                 }
             });
         }
@@ -190,12 +220,17 @@ angular.module('navigatorGlassProjectApp')
     $scope.onDelete = function() {
         if ($scope.selectedTimeline) {
             TimelineService.deleteCard($scope.selectedTimeline.id).success(function() {
-                for (var i = 0; i < $scope.timelines.length; i++) {
-                    if ($scope.selectedTimeline.id == $scope.timelines[i].id) {
-                        $scope.timelines.splice(i, 1);
-                        $scope.selectedTimeline = null;
-                        return;
-                    }
+                $scope.selectedTimeline = null;
+                $scope.selectedAlbum = null;
+                $scope.loadTimelines();
+                $scope.showDeleteMessage();
+            }).error(function(data, status) {
+                if (status == 403) {
+                    $scope.showForbidden();
+                } if (status == 0) {
+                    $scope.showTimeout();
+                } else {
+                    $scope.showError();
                 }
             });
         }
@@ -204,8 +239,16 @@ angular.module('navigatorGlassProjectApp')
     $scope.onInsert = function() {
         if ($scope.selectedTimeline) {
             TimelineService.createCard($scope.selectedTimeline).success(function(result) {
-                $scope.timelines.push(result);
-                alert("Done");
+                $scope.loadTimelines();
+                $scope.showInsertMessage();
+            }).error(function(data, status) {
+                if (status == 403) {
+                    $scope.showForbidden();
+                } if (status == 0) {
+                    $scope.showTimeout();
+                } else {
+                    $scope.showError();
+                }
             });
         }
     };
@@ -218,6 +261,54 @@ angular.module('navigatorGlassProjectApp')
                 $scope.state = "template";
             }
         }
+    };
+
+    $scope.messageType = "";
+
+    $scope.showError = function() {
+        $scope.messageType = "warning";
+        $scope.showMessage("There was an error with your request");
+    };
+
+    $scope.showTimeout = function() {
+        $scope.messageType = "warning";
+        $scope.showMessage("The request timed out");
+    };
+
+    $scope.showForbidden = function() {
+        $scope.messageType = "warning";
+        $scope.showMessage("You are not allowed to do this action");
+    };
+
+    $scope.showDeleteMessage = function() {
+        $scope.messageType = "success";
+        $scope.showMessage("The Item has been deleted");
+    };
+
+    $scope.showInsertMessage = function() {
+        $scope.messageType = "success";
+        $scope.showMessage("The Template has been saved");
+    };
+
+    $scope.showUpdateMessage = function() {
+        $scope.messageType = "success";
+        $scope.showMessage("The Timeline has been updated");
+    };
+
+    $scope.showMessage = function(message) {
+        $scope.statusMessage = message;
+        $scope.hasStatus = true;
+
+        if ($scope.timeout) {
+            window.clearTimeout($scope.timeout);
+        }
+
+        $scope.timeout = setTimeout(function() {
+            $scope.hasStatus = false;
+            $scope.$apply();
+
+            $scope.timeout = null;
+        }, 5000);
     };
 
     /*
@@ -249,9 +340,18 @@ angular.module('navigatorGlassProjectApp')
         });
     };
 
+    $scope.loadAlbums = function() {
+        TimelineService.getAlbums().success(function(result) {
+            $scope.albums = result;
+            $scope.selectedAlbum = null;
+            $scope.updateCurrentBundle();
+        });
+    };
+
     function init() {
         $scope.loadTimelines();
         $scope.loadMenuItems();
+        $scope.loadAlbums();
     }
 
     init();

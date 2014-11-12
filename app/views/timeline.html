@@ -19,6 +19,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="row">
+                    <div ng-show="hasStatus" ng-bind="statusMessage" class="statusBar alert alert-{{messageType}}">The Timeline is currently empty</div>
                     <div class="col-md-6 topContainer">
                         <div class="previewContainer">
                             <div class="full">

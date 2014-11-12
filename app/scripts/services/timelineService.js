@@ -9,6 +9,10 @@ angular.module('navigatorGlassProjectApp')
             return HttpService.mockHandle('GET','/timeline');
         },
 
+        getAlbums: function() {
+            return HttpService.handle('GET', '/Album');
+        },
+
         updateCard: function(card) {
             return HttpService.mockHandle('PUT', '/timeline', card);
         },

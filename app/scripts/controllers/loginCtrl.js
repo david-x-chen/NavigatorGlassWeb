@@ -30,7 +30,7 @@ angular.module('navigatorGlassProjectApp')
         //                                                            + "&response_type=token&client_id=" + ngAuthSettings.clientId
         //                                                            + "&redirect_uri=" + redirectUri;
 
-        var externalProviderUrl = Global.ApiUrl + "/Account/ExternalLoginCallback?"
+        var externalProviderUrl = Global.oAuth + "/Account/ExternalLoginCallback?"
                                                                    +"returnUrl=" + $scope.encodeData(redirectUri) 
                                                                    + "&client_id=" + Global.clientId;
         window.$windowScope = $scope;
