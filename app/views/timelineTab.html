@@ -1,5 +1,5 @@
-<div>        
-        <div class="empty-text" ng-show="timelines.length == 0">            
+<div data-ajax-spinner="loadingTimeline">        
+        <div class="empty-text" ng-show="isTimelineEmpty">            
             The Timeline is currently empty 
         </div>
         <div id="card_container" class="row">
