@@ -14,7 +14,6 @@ angular.module('navigatorGlassProjectApp')
     $scope.loadingTimeline = null;
 
     $scope.selectedTimeline = {};
-    $scope.selectedAlbum = null;
 
     $scope.hasStatus = false;
     $scope.statusMessage = "";
@@ -110,7 +109,6 @@ angular.module('navigatorGlassProjectApp')
         $scope.oldItem = angular.copy(timeline);
         $scope.selectedTimeline.newItem = newItem;
         $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
-        $scope.updateCurrentBundle();
         createJsonRepresentation($scope.selectedTimeline);
 
         if (newItem) {
@@ -169,28 +167,6 @@ angular.module('navigatorGlassProjectApp')
         }
     };
 
-    $scope.updateCurrentBundle = function() {
-        if ($scope.selectedTimeline && $scope.albums.length > 0) {
-            if ($scope.selectedTimeline.bundleId) {
-                for (var i = 0; i < $scope.albums.length; i++) {
-                    if ($scope.albums[i].bundleId == $scope.selectedTimeline.bundleId) {
-                        $scope.selectedAlbum = $scope.albums[i];
-                        return;
-                    }
-                }
-            } else {
-                $scope.selectedAlbum = null;
-            }
-        }
-    };
-
-    $scope.updateBundleId = function(selectedAlbum) {
-        $scope.selectedAlbum = selectedAlbum;
-        if ($scope.selectedTimeline) {
-            $scope.selectedTimeline.bundleId = $scope.selectedAlbum.bundleId;
-        }
-    };
-
     $scope.aceOption = {
         mode: $scope.mode.toLowerCase(),
         onLoad: function (ace) {
@@ -229,7 +205,6 @@ angular.module('navigatorGlassProjectApp')
         if ($scope.selectedTimeline) {
             TimelineService.deleteCard($scope.selectedTimeline.id).success(function() {
                 $scope.selectedTimeline = null;
-                $scope.selectedAlbum = null;
                 $scope.loadTimelines();
                 $scope.showDeleteMessage();
             }).error(function(data, status) {
@@ -355,8 +330,6 @@ angular.module('navigatorGlassProjectApp')
     $scope.loadAlbums = function() {
         TimelineService.getAlbums().success(function(result) {
             $scope.albums = result;
-            $scope.selectedAlbum = null;
-            $scope.updateCurrentBundle();
         });
     };
 
