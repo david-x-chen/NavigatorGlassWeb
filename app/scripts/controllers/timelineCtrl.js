@@ -39,8 +39,7 @@ angular.module('navigatorGlassProjectApp')
     */
 
     $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
-    $scope.templateTimelines = [];
-    
+        
     function makeState(timeline) {
         timeline.location = timeline.location || {};
         var temporaryState = {
@@ -97,9 +96,10 @@ angular.module('navigatorGlassProjectApp')
     Timeline is empty or not
     */
     $scope.isTimelineEmpty = function(){
-        var isEmpty = ($scope.loadingTimeline === false && $scope.timelines.lenght === 0);
+        var isEmpty = ($scope.loadingTimeline === false && $scope.timelines.length === 0);        
         return isEmpty;
     }
+
     /*
     Method that creates a preview of the Timeline.
     */
@@ -302,7 +302,7 @@ angular.module('navigatorGlassProjectApp')
     $scope.loadTimelines = function() {
         $scope.loadingTimeline = true;
         
-        TimelineService.getTimeline().success(function(result){
+        TimelineService.getTimeline().success(function(result){            
             $scope.timelines= result;
             for(var i=0; i< $scope.timelines.length ; i++) {
                 setTimelineItemOutput($scope.timelines[i]);

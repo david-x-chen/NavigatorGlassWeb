@@ -1,5 +1,7 @@
 angular.module('navigatorGlassProjectApp')
 .controller('TemplatesCtrl',function(HttpService,$scope,$sce,TemplateService){
+	
+	$scope.loadingTemplate = null;
 	/*
 	Method that outputs the TemplateItem as HTML & Text.
 	*/
@@ -18,14 +20,25 @@ angular.module('navigatorGlassProjectApp')
 	TemplateItem.
 	*/
 	$scope.loadTemplates = function() {
+		$scope.loadingTemplate = true;
 		TemplateService.getTemplates().success(function(result){
+			result = [result[0]];
 			$scope.templateTimelines= result;
 			for (var i = 0; i < $scope.templateTimelines.length; i++) {
 				setTemplateItemOutput($scope.templateTimelines[i]);
 			};
+
+			$scope.loadingTemplate = false;
 		});                
 	};
 
+	/*
+    Tempplate is empty or not
+    */
+    $scope.isTemplateEmpty = function(){
+        var isEmpty = ($scope.loadingTemplate === false && $scope.templateTimelines.length === 0);
+        return isEmpty;
+    }
 
 	$scope.loadTemplates();
 });

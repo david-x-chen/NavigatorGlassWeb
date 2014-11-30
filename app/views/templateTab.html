@@ -1,5 +1,6 @@
  <div ng-controller="TemplatesCtrl">
-        <div class="empty-text" ng-show="templateTimelines.length == 0">
+ <div data-ajax-spinner="loadingTemplate">
+    <div class="empty-text" ng-show="isTemplateEmpty()">
             The Template currently empty
         </div>
         <div id="card_container" class="row">
@@ -14,3 +15,5 @@
             </div>
         </div>
     </div>
+ </div>
+        
