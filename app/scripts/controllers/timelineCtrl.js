@@ -302,10 +302,19 @@ angular.module('navigatorGlassProjectApp')
     $scope.loadTimelines = function() {
         $scope.loadingTimeline = true;
         
-        TimelineService.getTimeline().success(function(result){            
+        TimelineService.getTimeline().success(function(result){
             $scope.timelines= result;
             for(var i=0; i< $scope.timelines.length ; i++) {
                 setTimelineItemOutput($scope.timelines[i]);
+            }
+
+            //Select first timeline if have
+            if($scope.timelines.length !== 0){
+                $scope.previewTimeline($scope.timelines[0], false);
+            }else {
+                if ($scope.previewTemplate) {
+                    $scope.previewTemplate();
+                };                
             }
 
             $scope.loadingTimeline = false;

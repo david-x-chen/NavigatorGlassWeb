@@ -21,8 +21,7 @@ angular.module('navigatorGlassProjectApp')
 	*/
 	$scope.loadTemplates = function() {
 		$scope.loadingTemplate = true;
-		TemplateService.getTemplates().success(function(result){
-			result = [result[0]];
+		TemplateService.getTemplates().success(function(result){			
 			$scope.templateTimelines= result;
 			for (var i = 0; i < $scope.templateTimelines.length; i++) {
 				setTemplateItemOutput($scope.templateTimelines[i]);
@@ -39,6 +38,7 @@ angular.module('navigatorGlassProjectApp')
         var isEmpty = ($scope.loadingTemplate === false && $scope.templateTimelines.length === 0);
         return isEmpty;
     }
+
 
 	$scope.loadTemplates();
 });
