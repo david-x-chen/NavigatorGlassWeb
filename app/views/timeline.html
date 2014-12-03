@@ -21,11 +21,13 @@
                 <div class="row">
                     <div ng-show="hasStatus" ng-bind="statusMessage" class="statusBar alert alert-{{messageType}}">The Timeline is currently empty</div>
                     <div class="col-md-6 topContainer">
-                        <div class="previewContainer">
+                        <div class="previewContainer" ng-controller="CardCtrl">                        
                             <div class="full">
                                 <div class="scalable">
-                                    <div class="card" style="left: 0px; width: 592px; " ng-bind-html="selectedTimeline.output">
+                                    <div id="leftscroll" class="scroll leftscroll" ng-click="onPrev()"></div>
+                                    <div id="card" class="card" style="left: 0px; width: 592px; " ng-bind-html="selectedTimeline.output">
                                     </div>
+                                    <div id="rightscroll" class="scroll rightscroll" ng-click="onNext()"></div>
                                 </div>
                             </div>
                         </div>

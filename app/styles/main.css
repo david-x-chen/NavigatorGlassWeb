@@ -276,6 +276,40 @@ div.small {
     border-color: #3072E1;
 }
 
+.previewContainer:hover .scroll {
+    opacity: 0.7;
+}
+
+.scroll {
+    cursor: pointer;
+    height: 346px;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    z-index: 100;
+}
+
+.leftscroll {
+    left: 0px;
+    background-image: url('../images/page_left.svg');
+}
+
+.rightscroll {
+    left: 552px;
+    background-image: url('../images/page_right.svg');
+}
+
+
+/*end card*/
+
 .topContainer {
     /*float: left;*/
     max-height: 560px;
