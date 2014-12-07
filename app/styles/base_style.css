@@ -51,12 +51,8 @@ article:first-of-type {
 /* Modifications to allow content to flow across pages. */
 article.auto-paginate {
   overflow: visible;
-
-  /* Keeps contents 40px from the top/bottom of the screen. */
-  height: 280px;
-  padding: 40px 0px;
-
-  /* Actually causes the pagination. */
+  height: 283px;
+  padding: 40px 0px 37px 0px;
   -webkit-column-width: 640px;
   -webkit-column-gap: 0px;
   -webkit-column-rule: 0px solid #000;
@@ -174,6 +170,8 @@ ol {
 }
 
 ul li, ol li {
+  border-bottom: 1px solid #333;
+  padding: 6px 0;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

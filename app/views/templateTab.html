@@ -7,7 +7,7 @@
             <div class="timelineItem" data-ng-repeat="templateTimelineItem in templateTimelines">
                 <div class="small">
                     <div class="smallcard">
-                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(templateTimelineItem,true)" ng-bind-html="templateTimelineItem.output" ng-class="{selected: templateTimelineItem.id == selectedTimeline.id}">
+                        <div class="card" style="left: 0px;" data-ng-click="previewTimeline(templateTimelineItem,true)" ng-bind-html="templateTimelineItem.thumb" ng-class="{selected: templateTimelineItem.id == selectedTimeline.id}">
                             <!--    {{timeline.output}}-->
                         </div>
                     </div>

@@ -9,6 +9,8 @@ angular.module('navigatorGlassProjectApp')
 		if (item.html && item.html.length > 0) {
 			item.output = item.html;
             item.htmlState = item.html;
+            var articles = angular.element(item.html).find('article');
+			item.thumb = articles.length > 0 ? angular.element(articles[0]).prop('outerHTML') : item.html; // display only 1st article
 		} else {
 			item.output = item.textState = item.text;
 		}
