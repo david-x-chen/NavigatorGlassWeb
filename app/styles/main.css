@@ -444,10 +444,10 @@ body.full {
 }
 
 .scalable {
-    width: 640px;
+    width: 592px;
     /*width: 640px;*/
     /*width: 100%;*/
-    height: 360px;
+    height: 346px;
     position: absolute;
     background-color: black;
     overflow: hidden;

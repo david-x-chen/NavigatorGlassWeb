@@ -20,13 +20,13 @@
             <div class="panel-body">
                 <div class="row">
                     <div ng-show="hasStatus" ng-bind="statusMessage" class="statusBar alert alert-{{messageType}}">The Timeline is currently empty</div>
-                    <div class="col-md-7 topContainer">
+                    <div class="col-md-6 topContainer">
                         <div class="previewContainer">
                             <div data-card="selectedTimeline">
                             </div>                            
                         </div>
                     </div>
-                    <div class="col-md-5 sourceContainer codeEditor">
+                    <div class="col-md-6 sourceContainer codeEditor">
                          <tabitem>
                             <pane heading="{{tabName}}">
                                 <div class="sourceBox" data-ui-ace="aceOption" data-ng-model="selectedTimeline.output"></div>
