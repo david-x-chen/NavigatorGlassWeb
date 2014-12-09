@@ -29,7 +29,7 @@ angular.module('navigatorGlassProjectApp')
         	}
         },
         link: function($scope, element, attrs) {
-            $scope.$watch('card', function () {
+            $scope.$watch('card.output', function () {
                 $scope.articles = angular.element($scope.card.output).find('article');
 	        	if ($scope.articles.length > 1) {
 	        		$scope.index = 0;
