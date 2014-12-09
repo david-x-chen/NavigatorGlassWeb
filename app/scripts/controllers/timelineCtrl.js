@@ -135,6 +135,10 @@ angular.module('navigatorGlassProjectApp')
             item.output = item.textState = item.text;
             $scope.tabName="TEXT"
         }
+
+        var articles = angular.element(item.html).find('article');
+        item.thumb = articles.length > 0 ? angular.element(articles[0]).prop('outerHTML') : item.html; // display only 1st article
+
         return item;
     }
 
