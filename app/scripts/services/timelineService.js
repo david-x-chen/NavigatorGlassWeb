@@ -5,12 +5,13 @@ This is the Timeline Service that retrieves data from the API.
 angular.module('navigatorGlassProjectApp')
 .service('TimelineService', function(HttpService) {
     return{
+        
         getTimeline: function() {
             return HttpService.mockHandle('GET','/timeline');
         },
 
         getAlbums: function() {
-            return HttpService.handle('GET', '/Album');
+            return HttpService.handle('GET', '/album');
         },
 
         updateCard: function(card) {

@@ -1,12 +1,12 @@
 'use strict';
 /*
-This is the Template Service that retrieves data from the API.
+  Template Service retrieves Google Glass Card Templates 
 */
 angular.module('navigatorGlassProjectApp')
 .service('TemplateService',function(HttpService) {
     return {
         getTemplates: function() {
-            return HttpService.handle('GET','/Template');
+            return HttpService.handle('GET','/template');
         }
     };
 });
