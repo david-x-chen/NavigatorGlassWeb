@@ -1,25 +1,44 @@
 <div ng-include src="' views/header.html'"></div>
 <div class="row">
     <div class="row">
-        <div class="btn btn-default delBtn" ng-click="loadTimelines()">
-            <span class="glyphicon glyphicon-refresh"></span>
-            Refresh
+        <div class="map-buttonbar">
+            <div id="api-actions" style="display: block;">
+                <button class="map-button app-bar-button" id="reload-button" ng-click="loadTimelines()">
+                    <img src="/images/reload.png" width="21" height="21" alt="Reload" />        
+                </button>
+
+                <button 
+                    class="map-button app-bar-button" id="delete-button" style="display: inline;"
+                    ng-show="isTimeline()">                   
+                    <img src="/images/trash.png" width="21" height="21" alt="Delete">        
+                </button>
+
+                <button id="send-button" style="display: inline;"
+                    class="map-button map-button-submit app-bar-action-button" 
+                    ng-click="onUpdate()" ng-show="isTimeline()" >
+                    Update Item        
+                </button>
+
+                <button id="send-button" style="display: inline;"
+                    class="map-button map-button-submit app-bar-action-button"
+                    ng-click="onInsert()" ng-show="isTemplate()" >
+                    Insert Item        
+                </button>
+            </div>
         </div>
-        <div class="btn btn-primary saveBtn {{ (oldItem == selectedTimeline ? 'true' : 'false') }}" ng-click="onUpdate()" ng-show="state == 'timeline' ">
-            <span class="glyphicon glyphicon-floppy-disk"></span>
-            Update
-        </div>
-        <div class="btn btn-danger delBtn" ng-click="onDelete()" ng-show="state == 'timeline' ">
-            <span class="glyphicon glyphicon-trash"></span>
-            Delete
-        </div>
-        <div class="btn btn-primary saveBtn" ng-click="onInsert()" ng-show="state == 'template' ">Insert</div>
     </div>
-    <div class="row">
+
+    <div class="row message-container">
+        <div ng-show="hasStatus" ng-bind="statusMessage" class="statusBar alert alert-{{messageType}}">
+            The Timeline is currently empty
+        </div>
+
+    </div>
+    
+    <div class="row main-container">
         <div class="panel panel-default">
             <div class="panel-body">
-                <div class="row">
-                    <div ng-show="hasStatus" ng-bind="statusMessage" class="statusBar alert alert-{{messageType}}">The Timeline is currently empty</div>
+                <div class="row">                    
                     <div class="col-md-6 topContainer">
                         <div class="previewContainer">
                             <div data-card="selectedTimeline">

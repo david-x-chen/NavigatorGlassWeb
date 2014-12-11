@@ -250,6 +250,16 @@ angular.module('navigatorGlassProjectApp')
         }
     };
 
+    $scope.isTimeline = function(){        
+        return $scope.state == "timeline"; 
+
+    }
+
+    $scope.isTemplate = function(){
+        return $scope.state == "template";   
+    }
+
+
     $scope.messageType = "";
 
     $scope.showError = function() {
