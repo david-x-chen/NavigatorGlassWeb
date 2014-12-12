@@ -208,7 +208,7 @@ angular.module('navigatorGlassProjectApp')
     $scope.onDelete = function() {
         if ($scope.selectedTimeline) {
             TimelineService.deleteCard($scope.selectedTimeline.id).success(function() {
-                $scope.selectedTimeline = null;
+                $scope.selectedTimeline = {};
                 $scope.loadTimelines();
                 $scope.showDeleteMessage();
             }).error(function(data, status) {
