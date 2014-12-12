@@ -638,6 +638,10 @@ body.full {
 }
 
 /*Button*/
+.map-buttonbar{
+    margin:0px 15px;
+}
+
 .map-button {
     cursor: pointer;
     margin-left: 0;
