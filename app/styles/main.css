@@ -640,6 +640,7 @@ body.full {
 /*Button*/
 .map-buttonbar{
     margin:0px 15px;
+    padding-bottom: 15px;
 }
 
 .map-button {
