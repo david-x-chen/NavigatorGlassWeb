@@ -1,5 +1,8 @@
 node_modules
+bower_components
 .tmp
 .sass-cache
-bower_components
+*.sublime-project
+*.sublime-workspace
 /*.log
+tmp/
