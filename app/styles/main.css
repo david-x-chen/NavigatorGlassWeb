@@ -697,3 +697,19 @@ body.full {
     background-image: linear-gradient(top,#4d90fe,#4787ed);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe',EndColorStr='#4787ed');
 }
+
+/*Block UI*/
+.block-ui.spinner-container{
+    background: #FFF;
+}
+
+.block-ui-overlay{
+    opacity: 1;
+    filter: alpha(opacity=1);
+}
+
+.block-ui-message{
+    background: url('../images/728.gif') transparent;
+    width: 64px;
+    height: 68px;
+}

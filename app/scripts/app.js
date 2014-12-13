@@ -14,7 +14,8 @@ var app = angular
   'config',
   'LocalStorageModule',
   'ngCookies',
-  'navigatorGlassMock'
+  'navigatorGlassMock',
+  'blockUI'
   ]);
 app.config(function ($routeProvider) {
   $routeProvider
@@ -38,6 +39,14 @@ app.config(function ($routeProvider) {
     redirectTo: '/'
   });
 
+});
+
+app.config(function (blockUIConfig) {
+  blockUIConfig.delay = 0;//remove delay
+  blockUIConfig.message = ''; //remove message because using image
+  blockUIConfig.cssClass = 'block-ui spinner-container'
+  blockUIConfig.autoBlock = true;
+  blockUIConfig.autoInjectBodyBlock = false;
 });
 
 app.run(['authService', function (authService) {
