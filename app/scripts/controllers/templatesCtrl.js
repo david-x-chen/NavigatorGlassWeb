@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('navigatorGlassProjectApp')
 .controller('TemplatesCtrl',function(HttpService,$scope,$sce,TemplateService){
 	
@@ -27,8 +29,7 @@ angular.module('navigatorGlassProjectApp')
 			$scope.templateTimelines= result;
 			for (var i = 0; i < $scope.templateTimelines.length; i++) {
 				setTemplateItemOutput($scope.templateTimelines[i]);
-			};
-
+			}
 			$scope.loadingTemplate = false;
 		});                
 	};
@@ -39,7 +40,7 @@ angular.module('navigatorGlassProjectApp')
     $scope.isTemplateEmpty = function(){
         var isEmpty = ($scope.loadingTemplate === false && $scope.templateTimelines.length === 0);
         return isEmpty;
-    }
+    };
 
 
 	$scope.loadTemplates();

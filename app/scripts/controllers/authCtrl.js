@@ -5,11 +5,12 @@
         var clientId = '126018090035.apps.googleusercontent.com';
         var apiKey = 'AIzaSyAzVOX38TBgREYPddfnxCJFPfZhN9uYODw';
         var scopes = 'https://www.googleapis.com/auth/glass.timeline';
-
+        var gapi = gapi || {};
+        
         window.handleClientLoad = function() {
             gapi.client.setApiKey(apiKey);
             window.setTimeout(checkAuth,1);
-        }
+        };
 
         function checkAuth() {
             gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);

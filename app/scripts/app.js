@@ -44,7 +44,7 @@ app.config(function ($routeProvider) {
 app.config(function (blockUIConfig) {
   blockUIConfig.delay = 0;//remove delay
   blockUIConfig.message = ''; //remove message because using image
-  blockUIConfig.cssClass = 'block-ui spinner-container'
+  blockUIConfig.cssClass = 'block-ui spinner-container';
   blockUIConfig.autoBlock = true;
   blockUIConfig.autoInjectBodyBlock = false;
 });

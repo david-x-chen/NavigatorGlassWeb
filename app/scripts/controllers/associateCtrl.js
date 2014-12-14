@@ -3,7 +3,7 @@ angular.module('navigatorGlassProjectApp')
   .controller('associateCtrl', function ($scope, $location,$timeout, authService) {
 
     $scope.savedSuccessfully = false;
-    $scope.message = "";
+    $scope.message = '';
 
     $scope.registerData = {
         userName: authService.externalAuthData.userName,
@@ -12,10 +12,9 @@ angular.module('navigatorGlassProjectApp')
     };
 
     $scope.registerExternal = function () {
-        authService.registerExternal($scope.registerData).then(function (response) {
-
+        authService.registerExternal($scope.registerData).then(function () {
             $scope.savedSuccessfully = true;
-            $scope.message = "User has been registered successfully, you will be redicted to timeline page in 2 seconds.";
+            $scope.message = 'User has been registered successfully, you will be redicted to timeline page in 2 seconds.';
             startTimer();
 
         },
@@ -24,7 +23,7 @@ angular.module('navigatorGlassProjectApp')
               for (var key in response.modelState) {
                   errors.push(response.modelState[key]);
               }
-              $scope.message = "Failed to register user due to:" + errors.join(' ');
+              $scope.message = 'Failed to register user due to:' + errors.join(' ');
           });
     };
 
@@ -33,6 +32,6 @@ angular.module('navigatorGlassProjectApp')
             $timeout.cancel(timer);
             $location.path('/timeline');
         }, 2000);
-    }
+    };
 
 });

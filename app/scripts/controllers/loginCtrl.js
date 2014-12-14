@@ -4,13 +4,13 @@ angular.module('navigatorGlassProjectApp')
 .controller('LoginCtrl', function ($scope, $location, authService, $cookies, Global) {
 
     $scope.loginData = {
-        userName: "",
-        password: "",
+        userName: '',
+        password: '',
         useRefreshTokens: false
     };
 
 
-    $scope.message = "";
+    $scope.message = '';
 
     $scope.login = function () {
 
@@ -26,20 +26,14 @@ angular.module('navigatorGlassProjectApp')
     $scope.authExternalProvider = function (provider) {
         var redirectUri = location.protocol + '//' + location.host + '/authComplete.html';
 
-        //var externalProviderUrl = ngAuthSettings.apiServiceBaseUri + "Account/ExternalLoginCallback?provider=" + provider
-        //                                                            + "&response_type=token&client_id=" + ngAuthSettings.clientId
-        //                                                            + "&redirect_uri=" + redirectUri;
-
-        var externalProviderUrl = Global.oAuth + "/Account/ExternalLoginCallback?"
-                                                                   +"returnUrl=" + $scope.encodeData(redirectUri) 
-                                                                   + "&client_id=" + Global.clientId;
+        var externalProviderUrl = Global.oAuth + '/Account/ExternalLoginCallback?'  +'returnUrl=' + $scope.encodeData(redirectUri)    + '&client_id=' + Global.clientId;
         window.$windowScope = $scope;
 
-        var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
+        var oauthWindow = window.open(externalProviderUrl, 'Authenticate Account', 'location=0,status=0,width=600,height=750');
     };
     
     $scope.encodeData = function(data){
-            return encodeURIComponent(data).replace(/\-/g, "%2D").replace(/\_/g, "%5F").replace(/\./g, "%2E").replace(/\!/g, "%21").replace(/\~/g, "%7E").replace(/\*/g, "%2A").replace(/\'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29");
+            return encodeURIComponent(data).replace(/\-/g, '%2D').replace(/\_/g, '%5F').replace(/\./g, '%2E').replace(/\!/g, '%21').replace(/\~/g, '%7E').replace(/\*/g, '%2A').replace(/\'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29');
     };
 
     $scope.authCompletedCB = function (fragment) {
@@ -54,5 +48,5 @@ angular.module('navigatorGlassProjectApp')
                 $location.path('/timeline');
             });
         });
-    }
+    };
 });

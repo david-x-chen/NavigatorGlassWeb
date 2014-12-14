@@ -10,7 +10,7 @@ angular.module('navigatorGlassProjectApp')
         $scope.refreshTokens = results.data;
 
     }, function (error) {
-        alert(error.data.message);
+        window.alert(error.data.message);
     });
 
     $scope.deleteRefreshTokens = function (index, tokenid) {
@@ -22,8 +22,8 @@ angular.module('navigatorGlassProjectApp')
             $scope.refreshTokens.splice(index, 1);
 
         }, function (error) {
-            alert(error.data.message);
+            window.alert(error.data.message);
         });
-    }
+    };
 
 });

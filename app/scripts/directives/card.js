@@ -20,13 +20,13 @@ angular.module('navigatorGlassProjectApp')
         		
         		$scope.enablePrev = $scope.index > 0;
         		$scope.enableNext = $scope.index < $scope.articles.length - 1;
-        	}
+        	};
         	$scope.onNext = function(){
         		$scope.html =  angular.element($scope.articles[++$scope.index]).prop('outerHTML');
 
         		$scope.enablePrev = $scope.index > 0;
         		$scope.enableNext = $scope.index < $scope.articles.length - 1;
-        	}
+        	};
         },
         link: function($scope, element, attrs) {
             $scope.$watch('card.output', function () {
@@ -37,7 +37,7 @@ angular.module('navigatorGlassProjectApp')
 	        		$scope.enableNext = true;
 	        	}else{
 	        		$scope.html = $scope.card.output;
-	        	};
+	        	}
             });
         },
         template:

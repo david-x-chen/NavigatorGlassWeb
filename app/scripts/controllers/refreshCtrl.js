@@ -2,7 +2,7 @@
 
 angular.module('navigatorGlassProjectApp')
 .controller('RefreshCtrl',  function ($scope, $location, authService) {
-
+    
     $scope.authentication = authService.authentication;
     $scope.tokenRefreshed = false;
     $scope.tokenResponse = null;

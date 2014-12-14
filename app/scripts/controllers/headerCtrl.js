@@ -5,7 +5,7 @@ angular.module('navigatorGlassProjectApp')
 $scope.logOut = function () {
         authService.logOut();
         $location.path('/#/');
-    }
+    };
 
     $scope.authentication = authService.authentication;
 

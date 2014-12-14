@@ -2,21 +2,21 @@
 
 angular.module('navigatorGlassProjectApp')
 .controller('TimelineCtrl',function(HttpService, $sce, $scope, TimelineService, LocationService, MenuItemService) {
-    var allowedJsonKeyProperty = ["id", "etag", "text", "html", "created", "updated", "menuItems", "speakableText"];
-    var guidConstant = "00000000-0000-0000-0000-000000000000";
+    var allowedJsonKeyProperty = ['id', 'etag', 'text', 'html', 'created', 'updated', 'menuItems', 'speakableText'];
+    var guidConstant = '00000000-0000-0000-0000-000000000000';
     
     $scope.modes = ['Scheme', 'XML', 'Javascript', 'Html'];
     $scope.mode = $scope.modes[0];
     $scope.timelines = [];
     $scope.albums = [];
-    $scope.tabName="HTML";
+    $scope.tabName='HTML';
     $scope.state = null;
     $scope.loadingTimeline = null;
 
     $scope.selectedTimeline = {};
 
     $scope.hasStatus = false;
-    $scope.statusMessage = "";
+    $scope.statusMessage = '';
 
     $scope.datepicker = {
         opened: false,
@@ -38,8 +38,6 @@ angular.module('navigatorGlassProjectApp')
     Method that creates the state for the TimelineItem or TemplateItem
     */
 
-    $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
-        
     function makeState(timeline) {
         timeline.location = timeline.location || {};
         var temporaryState = {
@@ -54,15 +52,18 @@ angular.module('navigatorGlassProjectApp')
             speakableText: timeline.speakableText
         };
         /*
-        Method that returns "" in case the textbox is empty.
+        Method that returns '' in case the textbox is empty.
         */
         function replacer(key, value) {
-            return (value ? value : "");
+            return (value ? value : '');
         }
 
         return JSON.stringify(temporaryState, replacer);
     }
 
+    $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
+        
+    
     /*
     Method that creates a JSON representation of a timeline or template.
     */
@@ -84,7 +85,7 @@ angular.module('navigatorGlassProjectApp')
         }
         for (var key in timeline) {
             var item = find(allowedJsonKeyProperty, key);
-            if (item != undefined) {
+            if (!item) {
                 jsonobj[key] = timeline[key];
             }
         }
@@ -98,7 +99,7 @@ angular.module('navigatorGlassProjectApp')
     $scope.isTimelineEmpty = function(){
         var isEmpty = ($scope.loadingTimeline === false && $scope.timelines.length === 0);        
         return isEmpty;
-    }
+    };
 
     /*
     Method that creates a preview of the Timeline.
@@ -116,7 +117,7 @@ angular.module('navigatorGlassProjectApp')
             $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
         }
 
-        if ($scope.selectedTimeline.id != guidConstant) {
+        if ($scope.selectedTimeline.id !== guidConstant) {
             $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
         }
 
@@ -130,10 +131,10 @@ angular.module('navigatorGlassProjectApp')
         if (item.html && item.html.length > 0) {
             item.output = item.html;
             item.htmlState = item.html;
-            $scope.tabName="HTML";
+            $scope.tabName='HTML';
         } else {
             item.output = item.textState = item.text;
-            $scope.tabName="TEXT"
+            $scope.tabName='TEXT';
         }
 
         var articles = angular.element(item.html).find('article');
@@ -149,7 +150,7 @@ angular.module('navigatorGlassProjectApp')
     $scope.hasProperty = function(property) {
         if ($scope.selectedTimeline && $scope.selectedTimeline.menuItems) {
             for (var i = 0; i < $scope.selectedTimeline.menuItems.length; i++) {
-                if ($scope.selectedTimeline.menuItems[i].id == property.id) {
+                if ($scope.selectedTimeline.menuItems[i].id === property.id) {
                     return true;
                 }
             }
@@ -161,7 +162,7 @@ angular.module('navigatorGlassProjectApp')
     $scope.switchProperty = function(property) {
         if ($scope.selectedTimeline && $scope.selectedTimeline.menuItems) {
             for (var i = 0; i < $scope.selectedTimeline.menuItems.length; i++) {
-                if (property.id == $scope.selectedTimeline.menuItems[i].id) {
+                if (property.id === $scope.selectedTimeline.menuItems[i].id) {
                     $scope.selectedTimeline.menuItems.splice(i, 1);
                     return;
                 }
@@ -185,7 +186,7 @@ angular.module('navigatorGlassProjectApp')
 
     $scope.getUpdatedCss = function() {
         return ($scope.selectedTimeline && 
-            $scope.selectedTimeline.created != $scope.selectedTimeline.updated ? 'color: #0099CC' : '');
+            $scope.selectedTimeline.created !== $scope.selectedTimeline.updated ? 'color: #0099CC' : '');
     };
 
     $scope.onUpdate = function() {
@@ -194,9 +195,9 @@ angular.module('navigatorGlassProjectApp')
                 $scope.loadTimelines();
                 $scope.showUpdateMessage();
             }).error(function(data, status) {
-                if (status == 403) {
+                if (status === 403) {
                     $scope.showForbidden();
-                } if (status == 0) {
+                } if (status === 0) {
                     $scope.showTimeout();
                 } else {
                     $scope.showError();
@@ -212,9 +213,9 @@ angular.module('navigatorGlassProjectApp')
                 $scope.loadTimelines();
                 $scope.showDeleteMessage();
             }).error(function(data, status) {
-                if (status == 403) {
+                if (status === 403) {
                     $scope.showForbidden();
-                } if (status == 0) {
+                } if (status === 0) {
                     $scope.showTimeout();
                 } else {
                     $scope.showError();
@@ -229,9 +230,9 @@ angular.module('navigatorGlassProjectApp')
                 $scope.loadTimelines();
                 $scope.showInsertMessage();
             }).error(function(data, status) {
-                if (status == 403) {
+                if (status === 403) {
                     $scope.showForbidden();
-                } if (status == 0) {
+                } if (status === 0) {
                     $scope.showTimeout();
                 } else {
                     $scope.showError();
@@ -242,54 +243,54 @@ angular.module('navigatorGlassProjectApp')
 
     function updateState() {
         if ($scope.selectedTimeline) {
-            if ($scope.selectedTimeline.created != null) {
-                $scope.state = "timeline";
+            if ($scope.selectedTimeline.created !== null) {
+                $scope.state = 'timeline';
             } else {
-                $scope.state = "template";
+                $scope.state = 'template';
             }
         }
-    };
+    }
 
     $scope.isTimeline = function(){        
-        return $scope.state == "timeline"; 
+        return $scope.state === 'timeline'; 
 
-    }
+    };
 
     $scope.isTemplate = function(){
-        return $scope.state == "template";   
-    }
+        return $scope.state === 'template';   
+    };
 
 
-    $scope.messageType = "";
+    $scope.messageType = '';
 
     $scope.showError = function() {
-        $scope.messageType = "warning";
-        $scope.showMessage("There was an error with your request");
+        $scope.messageType = 'warning';
+        $scope.showMessage('There was an error with your request');
     };
 
     $scope.showTimeout = function() {
-        $scope.messageType = "warning";
-        $scope.showMessage("The request timed out");
+        $scope.messageType = 'warning';
+        $scope.showMessage('The request timed out');
     };
 
     $scope.showForbidden = function() {
-        $scope.messageType = "warning";
-        $scope.showMessage("You are not allowed to do this action");
+        $scope.messageType = 'warning';
+        $scope.showMessage('You are not allowed to do this action');
     };
 
     $scope.showDeleteMessage = function() {
-        $scope.messageType = "success";
-        $scope.showMessage("The Item has been deleted");
+        $scope.messageType = 'success';
+        $scope.showMessage('The Item has been deleted');
     };
 
     $scope.showInsertMessage = function() {
-        $scope.messageType = "success";
-        $scope.showMessage("The Template has been saved");
+        $scope.messageType = 'success';
+        $scope.showMessage('The Template has been saved');
     };
 
     $scope.showUpdateMessage = function() {
-        $scope.messageType = "success";
-        $scope.showMessage("The Timeline has been updated");
+        $scope.messageType = 'success';
+        $scope.showMessage('The Timeline has been updated');
     };
 
     $scope.showMessage = function(message) {
@@ -328,7 +329,7 @@ angular.module('navigatorGlassProjectApp')
             }else {
                 if ($scope.previewTemplate) {
                     $scope.previewTemplate();
-                };                
+                }            
             }
 
             $scope.loadingTimeline = false;
@@ -341,7 +342,7 @@ angular.module('navigatorGlassProjectApp')
             $scope.menuItemBatches = [];
 
             for (var i = 0; i < result.length; i++) {
-                if (i % 5 == 0) {
+                if (i % 5 === 0) {
                     $scope.menuItemBatches.push([]);
                 }
 

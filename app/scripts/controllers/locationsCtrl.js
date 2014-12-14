@@ -1,4 +1,4 @@
-'use.strict'
+'use strict';
 
 angular.module('navigatorGlassProjectApp')
 .controller('LocationCtrl',function(HttpService,$scope,LocationService){
@@ -12,14 +12,11 @@ angular.module('navigatorGlassProjectApp')
         */
         $scope.createNewMaps(result);
     });
-    $scope.loadLocations = function() {
-        var json;
+    $scope.loadLocations = function() {        
         var maps = [];
-        var mapsOpt = [];
         var mapsDivs = [];
         var infos = [];
         var markers = [];
-        var centers = [];
         var map;
         var objJson;
         /*
@@ -27,14 +24,12 @@ angular.module('navigatorGlassProjectApp')
         */
         function createMarkerInfo(MapSel, iE, Pos, elem) {
             var acc = elem.accuracy;
-            var add = elem.address;
-            var dsp = elem.displayName;
+            //var add = elem.address;
+            //var dsp = elem.displayName;
             var lat = elem.latitude;
             var lon = elem.longitude;
             var tim = elem.timestamp;
             var id = elem.id;
-            var knd = elem.kind;
-            var tmr = elem.timestampRaw;
             var infoContent = '<font style="font-size: 6pt;font-family: Verdana;font-weight: normal;font-style: normal;color: black;">';
             infoContent += '<b>ID:</b>' + id;
             infoContent += '&nbsp;&nbsp;<b>Accuracy:</b>' + acc + '<br>';
@@ -65,21 +60,19 @@ angular.module('navigatorGlassProjectApp')
         $scope.createNewMaps= function(json) {
             objJson = json;
 
-            var scrollDiv = document.getElementById('scroll');
             for (var iE = 0; iE < objJson.length; iE++) {
                 mapsDivs[iE] = document.createElement('div');
                 mapsDivs[iE].id = 'map_canvas_' + iE;
-                mapsDivs[iE].style.cssText = "width:265px;height:150px";
+                mapsDivs[iE].style.cssText = 'width:265px;height:150px';
                 document.getElementById('scroll').appendChild(mapsDivs[iE]);
             }
             init();
-        }
+        };
         /*
         Method that initalizes each map
         */
         function init() {
-            var scrollDiv = document.getElementById('scroll');
-
+            
             if (objJson.length > 0) {
                 for (var iE = 0; iE < objJson.length; iE++) {
                     var elem = objJson[iE];
@@ -99,7 +92,7 @@ angular.module('navigatorGlassProjectApp')
                         zoom: 17,
                         center: center,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
-                    }
+                    };
 
                     if (mapsDivs[iE]) {
                         maps[iE] = new google.maps.Map(mapsDivs[iE], MapOptions);
@@ -108,10 +101,10 @@ angular.module('navigatorGlassProjectApp')
                 }
             }
             else {
-                console.log("Error while loading");
+                console.log('Error while loading');
             }
         }
-    }
+    };
     
     $scope.loadLocations();
 });

@@ -8,7 +8,7 @@ angular.module('navigatorGlassProjectApp')
 
         config.headers = config.headers || {};
         return config;
-    }
+    };
 
     var _responseError = function (rejection) {
         if (rejection.status === 401) {
@@ -25,7 +25,7 @@ angular.module('navigatorGlassProjectApp')
             $location.path('/login');
         }
         return $q.reject(rejection);
-    }
+    };
 
     authInterceptorServiceFactory.request = _request;
     authInterceptorServiceFactory.responseError = _responseError;

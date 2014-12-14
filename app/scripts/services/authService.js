@@ -8,14 +8,14 @@ angular.module('navigatorGlassProjectApp')
 
     var authentication = {
         isAuth: false,
-        userName: "",
+        userName: '',
         useRefreshTokens: false
     };
 
     var externalAuthData = {
-        provider: "",
-        userName: "",
-        externalAccessToken: ""
+        provider: '',
+        userName: '',
+        externalAccessToken: ''
     };
 
     var saveRegistration = function (registration) {
@@ -30,9 +30,9 @@ angular.module('navigatorGlassProjectApp')
 
     var login = function (loginData) {
 
-        var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
+        var data = 'grant_type=password&username=' + loginData.userName + '&password=' + loginData.password;
         if (loginData.useRefreshTokens) {
-            data = data + "&client_id=" + Global.clientId;
+            data = data + '&client_id=' + Global.clientId;
         }
 
         var deferred = $q.defer();
@@ -43,7 +43,7 @@ angular.module('navigatorGlassProjectApp')
                 localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true });
             }
             else {
-                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false });
+                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: '', useRefreshTokens: false });
             }
             authentication.isAuth = true;
             authentication.userName = loginData.userName;
@@ -65,7 +65,7 @@ angular.module('navigatorGlassProjectApp')
         localStorageService.remove('authorizationData');
 
         authentication.isAuth = false;
-        authentication.userName = "";
+        authentication.userName = '';
         authentication.useRefreshTokens = false;
         var data = '';
 
@@ -99,7 +99,7 @@ angular.module('navigatorGlassProjectApp')
 
             if (authData.useRefreshTokens) {
 
-                var data = "grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=" + Global.clientId;
+                var data = 'grant_type=refresh_token&refresh_token=' + authData.refreshToken + '&client_id=' + Global.clientId;
 
                 localStorageService.remove('authorizationData');
 
@@ -123,7 +123,7 @@ angular.module('navigatorGlassProjectApp')
 
         var deferred = $q.defer();
         
-        localStorageService.set('authorizationData', { token: 'test', userName: externalData.userName, refreshToken: "", useRefreshTokens: false });
+        localStorageService.set('authorizationData', { token: 'test', userName: externalData.userName, refreshToken: '', useRefreshTokens: false });
         
         authentication.isAuth = true;
         authentication.userName = externalData.external_user_name;
@@ -131,7 +131,7 @@ angular.module('navigatorGlassProjectApp')
         deferred.resolve();
         //$http.get(serviceBase + 'account/ObtainLocalAccessToken', { params: { provider: externalData.provider, externalAccessToken: externalData.externalAccessToken } }).success(function (response) {
 
-        //    localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
+        //    localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: '', useRefreshTokens: false });
 
         //    _authentication.isAuth = true;
         //    _authentication.userName = response.userName;
@@ -154,7 +154,7 @@ angular.module('navigatorGlassProjectApp')
 
         $http.post(serviceBase + 'api/account/registerexternal', registerExternalData).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
+            localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: '', useRefreshTokens: false });
 
             authentication.isAuth = true;
             authentication.userName = response.userName;
