@@ -7,6 +7,10 @@ angular.module('navigatorGlassProjectApp')
     return {
         getSubscriptions: function() {
             return HttpService.handle('GET','/subscription');
+        },
+        updateSubscriptions: function(subscriptions) {
+            return HttpService.handle('PUT','/subscription', subscriptions);
         }
+
     };
 });
