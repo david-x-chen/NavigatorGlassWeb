@@ -3,8 +3,7 @@
 angular.module('navigatorGlassProjectApp')
 .controller('TimelineCtrl',function(HttpService, $sce, $scope, TimelineService, LocationService, MenuItemService) {
     var allowedJsonKeyProperty = ['id', 'etag', 'text', 'html', 'created', 'updated', 'menuItems', 'speakableText'];
-    var guidConstant = '00000000-0000-0000-0000-000000000000';
-    
+        
     $scope.modes = ['Scheme', 'XML', 'Javascript', 'Html'];
     $scope.mode = $scope.modes[0];
     $scope.timelines = [];
@@ -112,16 +111,11 @@ angular.module('navigatorGlassProjectApp')
         $scope.selectedTimeline.state = makeState($scope.selectedTimeline);
         createJsonRepresentation($scope.selectedTimeline);
 
-        if (newItem) {
-            $scope.selectedTimeline.output = $scope.selectedTimeline.output;
-            $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
+        if (newItem) {                        
+            $scope.state = 'template';
+        }else {
+            $scope.state = 'timeline';
         }
-
-        if ($scope.selectedTimeline.id !== guidConstant) {
-            $scope.selectedTimeline.initState = $scope.selectedTimeline.output;
-        }
-
-        updateState();
     };
 
     /*
@@ -240,16 +234,6 @@ angular.module('navigatorGlassProjectApp')
             });
         }
     };
-
-    function updateState() {
-        if ($scope.selectedTimeline) {
-            if ($scope.selectedTimeline.created !== null) {
-                $scope.state = 'timeline';
-            } else {
-                $scope.state = 'template';
-            }
-        }
-    }
 
     $scope.isTimeline = function(){        
         return $scope.state === 'timeline'; 
