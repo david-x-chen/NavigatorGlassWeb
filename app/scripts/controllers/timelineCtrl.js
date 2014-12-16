@@ -84,7 +84,7 @@ angular.module('navigatorGlassProjectApp')
         }
         for (var key in timeline) {
             var item = find(allowedJsonKeyProperty, key);
-            if (!item) {
+            if (item) {
                 jsonobj[key] = timeline[key];
             }
         }
