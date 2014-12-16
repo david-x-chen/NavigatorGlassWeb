@@ -235,6 +235,17 @@ angular.module('navigatorGlassProjectApp')
         }
     };
 
+    $scope.onMenuItemClick = function(menuItem){
+        var data = {
+            timelineId: $scope.selectedTimeline.id,
+            menuId: menuItem.id
+        };
+        
+        MenuItemService.postMenuItems(data).success(function(result) {
+            //Todo: tbd
+        });
+    };
+
     $scope.isTimeline = function(){        
         return $scope.state === 'timeline'; 
 

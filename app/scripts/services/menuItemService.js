@@ -7,6 +7,9 @@ angular.module('navigatorGlassProjectApp')
     return {
         getMenuItems: function() {
             return HttpService.handle('GET','/menuItem');
+        },
+        postMenuItems: function(data) {
+            return HttpService.handle('POST','/menuItem', data);
         }
     };
 });
