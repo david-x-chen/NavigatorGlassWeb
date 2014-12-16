@@ -55,6 +55,21 @@
                                 <div class="jsonRep" data-ui-ace="aceOption" data-ng-model="selectedTimeline.jsonRepresentation"></div>
                             </pane>
                         </tabitem>
+                    </div>                    
+                </div>
+
+                <div class="row"> 
+                    <div id="menu-item-box" class="scroll-bar-box col-md-12">
+                        <div class="scroll-bar-inner">
+                            <div id="menu-item-list">
+                                <div class="menu-item" ng-repeat="menu in menuItems">
+                                    <center class="menu-item-value">
+                                        <img class="menu-item-icon" ng-src="{{menu.iconUrl}}">
+                                        <p class="menu-item-display-name">{{menu.displayName}}</p>
+                                    </center>
+                                </div>                                
+                            </div>
+                        </div>
                     </div>
                 </div>
 
