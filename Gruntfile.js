@@ -27,6 +27,42 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+    pkg: grunt.file.readJSON('package.json'),
+
+    // A simple code banner
+    tag: {
+      banner: 
+      '/*!\n' +
+      ' * <%= pkg.name %>\n' +
+      ' * <%= pkg.title %>\n' +
+      ' * <%= pkg.url %>\n' +
+      ' * @author <%= pkg.author %>\n' +
+      ' * @version <%= pkg.version %>\n' +
+      ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n' +
+      ' */\n'
+    },
+
+    // Sass compilation
+    sass: {
+      dev: {
+        options: {
+          style: 'expanded',
+          banner: '<%= tag.banner %>',
+        },
+        files: {
+          '<%= yeoman.app %>/styles/sass2css.css': '<%= yeoman.app %>/styles/sass/app.scss'
+        }
+      },
+      dist: {
+        options: {
+          style: 'compressed',
+        },
+        files: {
+          '<%= yeoman.app %>/styles/sass2css.css': '<%= yeoman.app %>/styles/sass/app.scss'
+        }
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -60,7 +96,11 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
-      }
+      },
+      sass: {
+        files: '<%= yeoman.app %>/styles/sass/{,*/}*.{scss,sass}',
+        tasks: ['sass:dev', 'cssmin:dev', 'autoprefixer:dev']
+      }      
     },
 
     ngconstant: {
@@ -543,7 +583,7 @@ module.exports = function (grunt) {
     // Test settings
     karma: {
       unit: {
-        configFile: 'test/karma.conf.js',
+        configFile: './test/karma.conf.js',
         singleRun: true
       }
     }
@@ -611,14 +651,15 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask("serve:mock", [
-      'clean:server',
-      'ngconstant:mock',
-      'wiredep',
-      'concurrent:server',
-      'autoprefixer',
-      'connect:mock',
-      'watch'
-  ]);
+    'clean:server',
+    'ngconstant:mock',
+    'wiredep',
+    'concurrent:server',
+    'sass:dev',
+    'autoprefixer',
+    'connect:mock',
+    'watch'
+    ]);
 
   grunt.registerTask('test', [
     'clean:server',
@@ -723,6 +764,7 @@ module.exports = function (grunt) {
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
+    'sass:dev',
     'autoprefixer',
     'concat',
     'ngAnnotate',
@@ -737,6 +779,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
+    'sass:dev',
     'test',
     'build'
   ]);

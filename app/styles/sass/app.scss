@@ -1,11 +1,11 @@
-@charset UTF-8;
+@charset 'UTF-8';
 
 @import 
 	'mixins'
 	, 'variables'
-	, 'bootstrap-override'
-	, 'base_styles'
-	, 'main'
 	, 'site'
 	, 'site-2'
+	, 'main'
+	, 'base_style'
+	, 'bootstrap-override'
 	;
