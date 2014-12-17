@@ -1,5 +1,7 @@
 @charset 'UTF-8';
 
+$icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
 @import 
 	// ============================================================================================ 
 	// Bootstrap 3.x
@@ -10,6 +12,7 @@
 	// Reset and dependencies
 	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize.scss'
 	// , 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets.scss'
 	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons.scss'
 
 	// Bootstrap Social
