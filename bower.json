@@ -20,7 +20,11 @@
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
-    "angular-scenario": "~1.2.0"
+    "angular-scenario": "~1.2.0",
+    "bootstrap-sass-official": "~3.3.1",
+    "bootstrap": "~3.3.1",
+    "bootstrap-social": "~4.8.0",
+    "font-awesome": "~4.2.0"
   },
   "overrides": {
     "ace-builds": {
@@ -31,5 +35,8 @@
       ]
     }
   },
-  "appPath": "app"
+  "appPath": "app",
+  "resolutions": {
+    "bootstrap-social": "~4.7.0"
+  }
 }
