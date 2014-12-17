@@ -1,15 +1,15 @@
 .nav-tabs > li {
   > a {
-    padding: 0px 8px;
-    height: 27px;
-    line-height: 27px;
     min-width: 54px;
-    font-size: 11px;
-    text-align: center;
-    font-weight: bold;
-    color: #666;
+    height: 27px;
+    padding: 0px 8px;
     border: none;
     border-radius: 0px 0px;
+    color: $steel;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 27px;
 
     &:hover {
       background: transparent;
@@ -17,7 +17,7 @@
   }
 
   &.active > a {
-    color: #202020;
+    color: $jet;
   }
 }
 
@@ -53,6 +53,7 @@
   }
 
   .time-control {
+    float: left;
     table {
       width: 120px !important;
     }
@@ -71,9 +72,6 @@
         width: 10px !important;
       }
     }
-
-    float: left;
-    input[type=text]! {}
   }
   
   .input-group-addon {

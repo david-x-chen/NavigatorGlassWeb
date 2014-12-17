@@ -1,15 +1,4 @@
 /*--------------------------------------- */
-/* RESET */
-
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  color: inherit;
-}
-
-/*--------------------------------------- */
 /* BASIC COMPONENTS */
 
 /* Base card size, colors, and fonts. */
@@ -22,12 +11,12 @@ article {
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: #000;
-  color: #fff;
+  background-color: $black;
+  color: $white;
   font-family: 'Roboto';
   font-weight: 100;
   font-size: 40px;
-  text-shadow: 0 1px 1px #000;
+  text-shadow: 0 1px 1px $black;
   /*visibility: hidden;*/
 
   a {
@@ -47,7 +36,7 @@ article {
     padding: 40px 0px 37px 0px;
     -webkit-column-width: 640px;
     -webkit-column-gap: 0px;
-    -webkit-column-rule: 0px solid #000;
+    -webkit-column-rule: 0px solid $black;
 
     > * {
       margin-left: 40px;
@@ -177,7 +166,7 @@ ol {
 }
 
 ul li, ol li {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid $oil;
   padding: 6px 0;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -214,7 +203,7 @@ table {
 }
 
 /*tr {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid $oil;
   padding: 0;
   max-width: 560px;
 }*/
@@ -224,7 +213,7 @@ tr:last-child, table.no-border tr {
 }
 
 /*td {
-  color: #fff;
+  color: $white;
   padding: 12px 0.4em;
   overflow: hidden;
   vertical-align: baseline;
@@ -283,7 +272,7 @@ hr {
   clear: both;
   margin: 8px 0 14px;
   height: 0;
-  border-top: 1px solid #333;
+  border-top: 1px solid $oil;
 }
 
 /*--------------------------------------- */
@@ -439,7 +428,7 @@ sub {
     float: left;
     height: 100%;
     padding: 10px 29px 10px 30px;
-    border-right: 1px solid #666;
+    border-right: 1px solid $steel;
     overflow: hidden;
 
     &:last-child {
@@ -509,11 +498,11 @@ footer [class^="layout-"] > div {
 }
 
 .white {
-  color: #fff;
+  color: $white;
 }
 
 .gray, .muted {
-  color: #808080;
+  color: $gray;
 }
 
 /*---------------------------------------
@@ -562,7 +551,7 @@ article {
       left: 0;
       right: 0;
       bottom: 0;
-      background: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+      background: -webkit-linear-gradient(rgba($black, 0), rgba($black, 0.9));
     }
   
     .text-x-large {
@@ -746,47 +735,49 @@ figure ul.mosaic {
  * the author's name/username) and a secondary heading.
  */
 
-article.author {
-  header {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 70px;
-    padding-left: 90px;
-    margin: 40px 40px 40px 40px;
-    font-size: 26px;
-    font-weight: 300;
+article {
+  &.author {
+    header {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 70px;
+      padding-left: 90px;
+      margin: 40px 40px 40px 40px;
+      font-size: 26px;
+      font-weight: 300;
 
-    > {
-      img {
-        position: absolute;
-        left: 0;
-        width: 70px;
-        height: 70px;
-      }
+      > {
+        img {
+          position: absolute;
+          left: 0;
+          width: 70px;
+          height: 70px;
+        }
 
-      h1 {
-        color: #ffffff;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        line-height: 36px;
-      }
+        h1 {
+          color: $white;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          line-height: 36px;
+        }
 
-      h2 {
-        color: #808080;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        margin-top: -2px;
+        h2 {
+          color: $gray;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          margin-top: -2px;
+        }
       }
     }
-  }
 
-  section {
-    top: 88px;
-    height: 160px;
+    section {
+      top: 88px;
+      height: 160px;
+    }    
   }
 }
 
@@ -806,7 +797,7 @@ div {
     left: 0;
     right: 0;
     bottom: 0;
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+    background: -webkit-linear-gradient(rgba($black, 0), rgba($black, 0.8));
   }
 
   &.overlay-gradient-tall-dark {
@@ -816,7 +807,7 @@ div {
     left: 0;
     right: 0;
     bottom: 0;
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.85) 100%);
+    background: -webkit-linear-gradient(rgba($black, 0.2) 30%, rgba($black, 0.85) 100%);
   }
 
   &.overlay-gradient-medium {
@@ -826,7 +817,7 @@ div {
     left: 0;
     right: 0;
     bottom: 0;
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+    background: -webkit-linear-gradient(rgba($black, 0), rgba($black, 0.8));
   }
 
   &.overlay-gradient-short {
@@ -836,7 +827,7 @@ div {
     left: 0;
     right: 0;
     bottom: 0;
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+    background: -webkit-linear-gradient(rgba($black, 0), rgba($black, 0.6));
   }
   
   &.overlay-full {
@@ -846,7 +837,7 @@ div {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba($black, 0.7);
   }
 }
 

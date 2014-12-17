@@ -1,9 +1,3 @@
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header, .marketing, .footer {
   padding-left: 15px;
@@ -12,7 +6,7 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $e5;
 
   h3 {
     margin-top: 0;
@@ -27,8 +21,8 @@ body {
 /* Custom page footer */
 .footer {
   padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+  color: $monsoon;
+  border-top: 1px solid $e5;
 }
 
 /* Customize container */
@@ -39,7 +33,7 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $e5;
 
   .btn {
     font-size: 21px;
@@ -156,7 +150,7 @@ input {
 }
 
 .clients-carousel {
-  border: 1px solid #f6f6f6;
+  border: 1px solid $f6;
   overflow: hidden;
 }
 
@@ -165,7 +159,7 @@ input {
 }
 
 .clients-carousel ul.clients {
-  background: #fcfcfc;
+  background: $fc;
 }
 
 .slides, .flex-control-nav, .flex-direction-nav {
@@ -327,10 +321,10 @@ body.full {
   font-variant: normal;
   font-weight: normal;
   resize: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba($black, 0.1);
   outline: none;
   overflow-x: hidden;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 4px rgba($black, 0.1);
 }
 
 .jsonRep {
@@ -346,10 +340,10 @@ body.full {
   font-variant: normal;
   font-weight: normal;
   resize: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba($black, 0.1);
   outline: none;
   overflow-x: hidden;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 4px rgba($black, 0.1);
   white-space: pre;
 }
 
@@ -451,7 +445,7 @@ body.full {
 }
 
 .disableItem {
-  background-color: #EEEEEE;
+  background-color: $ee;
 }
 
 .propParContent {
@@ -459,7 +453,7 @@ body.full {
 }
 
 .panel-body .empty-text {
-  color: #AAAAAA;
+  color: $aa;
   font-size: 36px;
   margin: 60px 0 0 50px;
   position: absolute;
@@ -520,7 +514,7 @@ body.full {
   margin-left: 0;
   box-sizing: content-box;
   min-width: 54px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba($black, 0.1);
   text-align: center;
   color: #444;
   font-size: 11px;

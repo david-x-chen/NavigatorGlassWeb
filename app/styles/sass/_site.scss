@@ -1,6 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   padding-top: 50px;
   padding-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 // 
@@ -10,25 +24,12 @@ body {
 /* Sticky footer styles
 -------------------------------------------------- */
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  padding-top: 40px;
-  padding-bottom: 10px;
-}
-
 #footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #f5f5f5;
+  background-color: $f5;
 }
 
 .text-muted {
@@ -140,7 +141,7 @@ input {
 }
 
 .clients-carousel {
-  border: 1px solid #f6f6f6;
+  border: 1px solid $f6;
   overflow: hidden;
 }
 
@@ -149,7 +150,7 @@ input {
 }
 
 .clients-carousel ul.clients {
-  background: #fcfcfc;
+  background: $fc;
 }
 
 .slides, .flex-control-nav, .flex-direction-nav {
@@ -173,7 +174,7 @@ input {
   overflow-y: hidden;
   white-space: nowrap;
   padding-top: 20px;
-  color: #fff;
+  color: $white;
   font-size: 30px;
 }
 
@@ -232,7 +233,7 @@ div.small {
 
 .smallcard > {
   .card {
-    border: 10px solid #FFF;
+    border: 10px solid $white;
   }
 
   .selected {
@@ -282,10 +283,10 @@ body.full {
   font-variant: normal;
   font-weight: normal;
   resize: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba($black, 0.1);
   outline: none;
   overflow-x: hidden;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 4px rgba($black, 0.1);
 }
 
 .jsonRep {
@@ -301,10 +302,10 @@ body.full {
   font-variant: normal;
   font-weight: normal;
   resize: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba($black, 0.1);
   outline: none;
   overflow-x: hidden;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 4px rgba($black, 0.1);
   white-space: pre;
 }
 
@@ -415,7 +416,7 @@ body.full {
 }
 
 .disableItem {
-  background-color: #EEEEEE;
+  background-color: $ee;
 }
 
 .propParContent {
@@ -423,7 +424,7 @@ body.full {
 }
 
 .tab-pane .empty-text {
-  color: #AAAAAA;
+  color: $aa;
   font-size: 36px;
   margin: 60px 0 0 50px;
   position: absolute;
@@ -497,7 +498,7 @@ a:hover {
 .page-header {
   padding-bottom: 9.5px;
   margin: 42px 0 21px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid $dd;
 }
 
 .text-center {
@@ -511,12 +512,12 @@ a:hover {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
+  color: $charcoal;
+  background-color: $white;
   background-image: none;
-  border: 1px solid #ccc;
+  border: 1px solid $cc;
   border-radius: 4px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba($black, 0.075);
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   max-width: 100%;
 }

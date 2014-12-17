@@ -1,17 +1,22 @@
 @charset 'UTF-8';
 
+// Settings the relative path to bootstrap font icons to work with bootstrap-sprockets and modular sass
 $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 @import 
+
 	// ============================================================================================ 
-	// Bootstrap 3.x
+	// Bootstrap 3.3.1 
+	// We link bootstrap components from here to control which ones are used 
+	// without touching the original package
+
 	// Core variables and mixins
 	 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables.scss'
 	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins.scss'
 
 	// Reset and dependencies
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print.scss'
 	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize.scss'
-	// , 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print.scss'
 	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets.scss'
 	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons.scss'
 
@@ -62,11 +67,13 @@ $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bo
 
 	// ============================================================================================ 
 	// Bootstrap Social
+		
 	, 'bower_components/bootstrap-social/bootstrap-social.scss'
 	
 
 	// ============================================================================================ 
 	// Font Awesome
+		
 	, 'bower_components/font-awesome/scss/variables.scss'
 	, 'bower_components/font-awesome/scss/mixins.scss'
 	, 'bower_components/font-awesome/scss/path.scss'
@@ -86,10 +93,11 @@ $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bo
 
 	// ============================================================================================ 
 	// App components
+		
 	, 'variables.scss'
 	, 'mixins.scss'
+	, 'base_style.scss'
 	, 'site.scss'
 	, 'main.scss'
-	, 'base_style.scss'
 	, 'bootstrap-override.scss'
 	;
