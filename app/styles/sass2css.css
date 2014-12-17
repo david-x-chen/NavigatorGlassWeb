@@ -10901,11 +10901,6 @@ a:hover {
     border-bottom: 0;
   }
 }
-body {
-  padding-top: 50px;
-  padding-bottom: 20px;
-}
-
 /* Set padding to keep content from hitting the edges */
 .body-content {
   padding-left: 15px;
@@ -11163,9 +11158,7 @@ div.small {
 }
 
 .propertiesContent {
-  /*margin-top: 20px;*/
-  margin: 0px;
-  margin-top: 29px;
+  margin: 29px 0 0;
 }
 
 .propSize {
