@@ -9,6 +9,7 @@
 
 @charset "UTF-8";
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+@import url(../../bower_components/angular-block-ui/dist/angular-block-ui.css);
 @media print {
   *,
   *:before,
