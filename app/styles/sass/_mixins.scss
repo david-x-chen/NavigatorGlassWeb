@@ -99,6 +99,13 @@
     border-radius: $radius;
 }
 
+// User select 
+@mixin user-select($user-select-args) {
+    -webkit-user-select: $user-select-args;
+    -moz-user-select: $user-select-args;
+    -ms-user-select: $user-select-args;
+    user-select: $user-select-args;
+}
 
 // Box sizing
 @mixin box-sizing($bs-val) {
@@ -140,12 +147,4 @@
     background-color: $fallback-color;
     background-image: -webkit-linear-gradient($pos-degree $full); 
     background-image: unquote("linear-gradient(#{$pos-spec}#{$full})");
-}
-
-// User select 
-@mixin user-select($user-select-args) {
-    -webkit-user-select: $user-select-args;
-    -moz-user-select: $user-select-args;
-    -ms-user-select: $user-select-args;
-    user-select: $user-select-args;
 }

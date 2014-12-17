@@ -190,13 +190,15 @@ ul.no-border li, ol.no-border li {
 
 /* Remove top padding for lists that are the first element in a section. */
 
-section > ul:first-child li:first-child, ol:first-child li:first-child {
+section > ul:first-child li:first-child, 
+ol:first-child li:first-child {
   padding-top: 0;
 }
 
 /* Remove bottom padding for lists that are the last element in a section. */
 
-section > ul:last-child li:last-child, ol:last-child li:last-child {
+section > ul:last-child li:last-child, 
+ol:last-child li:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -343,46 +345,41 @@ sub {
   very short, important strings and a 26px size for footers.
  */
 
-.text-xx-large {
+.text-xx-large,
+.text-x-large,
+.text-large,
+.text-normal,
+.text-small,
+.text-x-small {
   font-weight: 100;
+  line-height: 1.2em;
+}
+
+.text-xx-large {
   font-size: 90px;
   letter-spacing: -1px;
-  line-height: 1.2em;
 }
 
 .text-x-large {
-  font-weight: 100;
   font-size: 70px;
   letter-spacing: -1px;
-  line-height: 1.2em;
 }
 
 .text-large {
-  font-weight: 100;
   font-size: 50px;
-  letter-spacing: 0;
-  line-height: 1.2em;
 }
 
 .text-normal {
-  font-weight: 100;
   font-size: 40px;
-  letter-spacing: 0;
-  line-height: 1.2em;
 }
 
 .text-small {
-  font-weight: 100;
   font-size: 34px;
-  letter-spacing: 0;
-  line-height: 1.2em;
 }
 
 .text-x-small {
-  font-weight: 100;
   font-size: 30px;
   letter-spacing: 0;
-  line-height: 1.18em;
 }
 
 /* Footer-style text. */
@@ -671,7 +668,8 @@ ul.mosaic {
     height: 180px;
   }
   
-  &.mosaic6 li:nth-child(3n), &.mosaic7 li:nth-child(3n) {
+  &.mosaic6 li:nth-child(3n), 
+  &.mosaic7 li:nth-child(3n) {
     width: 214px;
   }
   
