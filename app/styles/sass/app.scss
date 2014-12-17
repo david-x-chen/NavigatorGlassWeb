@@ -1,10 +1,92 @@
 @charset 'UTF-8';
 
 @import 
-	'mixins'
-	, 'variables'
-	, 'site'
-	, 'main'
-	, 'base_style'
-	, 'bootstrap-override'
+	// ============================================================================================ 
+	// Bootstrap 3.x
+	// Core variables and mixins
+	 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins.scss'
+
+	// Reset and dependencies
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize.scss'
+	// , 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons.scss'
+
+	// Bootstrap Social
+	, 'bower_components/bootstrap-social/bootstrap-social.scss'
+
+	// Core CSS
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/type.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/code.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/grid.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/tables.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/forms.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/buttons.scss'
+
+	// Components
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/component-animations.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/dropdowns.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/button-groups.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/input-groups.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/navs.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/navbar.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/breadcrumbs.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/pagination.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/pager.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/labels.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/badges.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/jumbotron.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/thumbnails.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/alerts.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/progress-bars.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/media.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/list-group.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/panels.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/responsive-embed.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/wells.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/close.scss'
+
+	// Components w/ JavaScript
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/modals.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/tooltip.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/popovers.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/carousel.scss'
+
+	// Utility classes
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/utilities.scss'
+	, 'bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/responsive-utilities.scss'
+
+	// ============================================================================================ 
+	// Bootstrap Social
+	, 'bower_components/bootstrap-social/bootstrap-social.scss'
+	
+
+	// ============================================================================================ 
+	// Font Awesome
+	, 'bower_components/font-awesome/scss/variables.scss'
+	, 'bower_components/font-awesome/scss/mixins.scss'
+	, 'bower_components/font-awesome/scss/path.scss'
+	, 'bower_components/font-awesome/scss/core.scss'
+	, 'bower_components/font-awesome/scss/larger.scss'
+	, 'bower_components/font-awesome/scss/fixed-width.scss'
+	, 'bower_components/font-awesome/scss/list.scss'
+	, 'bower_components/font-awesome/scss/bordered-pulled.scss'
+	, 'bower_components/font-awesome/scss/spinning.scss'
+	, 'bower_components/font-awesome/scss/rotated-flipped.scss'
+	, 'bower_components/font-awesome/scss/stacked.scss'
+	, 'bower_components/font-awesome/scss/icons.scss'
+
+	// ============================================================================================ 
+	// Angular Block Utility
+	, 'bower_components/angular-block-ui/dist/angular-block-ui.css'		
+
+	// ============================================================================================ 
+	// App components
+	, 'variables.scss'
+	, 'mixins.scss'
+	, 'site.scss'
+	, 'main.scss'
+	, 'base_style.scss'
+	, 'bootstrap-override.scss'
 	;
