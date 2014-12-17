@@ -183,7 +183,7 @@ input {
   overflow-y: hidden;
   white-space: nowrap;
   padding-top: 20px;
-  color: #fff;
+  color: $white;
   font-size: 30px;
 }
 
@@ -242,7 +242,7 @@ div.small {
 
 .smallcard > {
   .card {
-    border: 10px solid #FFF;
+    border: 10px solid $white;
   }
 
   .selected {
@@ -293,11 +293,6 @@ div.small {
   width: 670px;
 }
 
-body.full {
-  width: 640px;
-  height: 360px;
-  overflow: hidden;
-}
 
 .sourceContainer {
   transition: opacity 0.2s ease-in-out 0s;
@@ -387,8 +382,10 @@ body.full {
 }
 
 .statusBar {
-  margin: 10px 0;
+  width: 592px;
   height: 30px;
+  padding-top: 5px !important;
+  margin: 10px 20px 10px 16px ;
 }
 
 /*.ace_editor { height: 200px; }*/
@@ -404,12 +401,12 @@ body.full {
 }
 
 .fade-hide-setup {
+  opacity: 1;
+
   &.fade-hide-start {
     transition: all linear 1s;
     opacity: 0;
   }
-
-  opacity: 1;
 }
 
 .sample-show-hide {
@@ -487,7 +484,6 @@ body.full {
   width: 100%;
   height: 200px;
   overflow: auto;
-  -ms-overflow-y: hidden;
   overflow-y: hidden;
 }
 
@@ -516,7 +512,7 @@ body.full {
   min-width: 54px;
   border: 1px solid rgba($black, 0.1);
   text-align: center;
-  color: #444;
+  color: $tuatara;
   font-size: 11px;
   font-weight: bold;
   height: 27px;
@@ -548,7 +544,7 @@ body.full {
 
 .map-button-submit {
   border: 1px solid #3079ed;
-  color: #FFF;
+  color: $white;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#4d90fe), to(#4787ed));
   background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
   background-image: -o-linear-gradient(top, #4d90fe, #4787ed);
@@ -559,7 +555,7 @@ body.full {
 /*Block UI*/
 
 .block-ui.spinner-container {
-  background: #FFF;
+  background: $white;
 }
 
 .block-ui-overlay {
