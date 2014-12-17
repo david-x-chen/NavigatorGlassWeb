@@ -610,47 +610,51 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask("serve:dev", [
-      'clean:server',
-      'ngconstant:dev',
-      'wiredep',
-      'concurrent:server',
-      'autoprefixer',
-      'connect:dev',
-      'watch'
+  grunt.registerTask('serve:dev', [
+    'clean:server',
+    'ngconstant:dev',
+    'wiredep',
+    'concurrent:server',
+    'sass:dev',
+    'autoprefixer',
+    'connect:dev',
+    'watch'
   ]);
 
-  grunt.registerTask("serve:local", [
-      'clean:server',
-      'ngconstant:local',
-      'wiredep',
-      'concurrent:server',
-      'autoprefixer',
-      'connect:local',
-      'watch'
+  grunt.registerTask('serve:local', [
+    'clean:server',
+    'ngconstant:local',
+    'wiredep',
+    'concurrent:server',
+    'sass:dev',
+    'autoprefixer',
+    'connect:local',
+    'watch'
   ]);
 
-  grunt.registerTask("serve:stage", [
-      'clean:server',
-      'ngconstant:stage',
-      'wiredep',
-      'concurrent:server',
-      'autoprefixer',
-      'connect:stage',
-      'watch'
+  grunt.registerTask('serve:stage', [
+    'clean:server',
+    'ngconstant:stage',
+    'wiredep',
+    'concurrent:server',
+    'sass:dev',
+    'autoprefixer',
+    'connect:stage',
+    'watch'
   ]);
 
-  grunt.registerTask("serve:prod", [
-      'clean:server',
-      'ngconstant:prod',
-      'wiredep',
-      'concurrent:server',
-      'autoprefixer',
-      'connect:prod',
-      'watch'
+  grunt.registerTask('serve:prod', [
+    'clean:server',
+    'ngconstant:prod',
+    'wiredep',
+    'concurrent:server',
+    'sass:dev',
+    'autoprefixer',
+    'connect:prod',
+    'watch'
   ]);
 
-  grunt.registerTask("serve:mock", [
+  grunt.registerTask('serve:mock', [
     'clean:server',
     'ngconstant:mock',
     'wiredep',
