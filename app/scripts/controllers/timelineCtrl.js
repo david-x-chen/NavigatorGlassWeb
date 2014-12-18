@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.controller('TimelineCtrl',function(HttpService, $sce, $scope, TimelineService, LocationService, MenuItemService) {
+.controller('TimelineCtrl',function(HttpService, $sce, $scope, TimelineService, LocationService, MenuItemService, toaster) {
     var allowedJsonKeyProperty = ['id', 'etag', 'text', 'html', 'created', 'updated', 'menuItems', 'speakableText'];
         
     $scope.modes = ['Scheme', 'XML', 'Javascript', 'Html'];
@@ -13,9 +13,6 @@ angular.module('navigatorGlassProjectApp')
     $scope.loadingTimeline = null;
 
     $scope.selectedTimeline = {};
-
-    $scope.hasStatus = false;
-    $scope.statusMessage = '';
 
     $scope.datepicker = {
         opened: false,
@@ -183,7 +180,7 @@ angular.module('navigatorGlassProjectApp')
             $scope.selectedTimeline.created !== $scope.selectedTimeline.updated ? 'color: #0099CC' : '');
     };
 
-    $scope.onUpdate = function() {
+    $scope.onUpdate = function() {        
         if ($scope.selectedTimeline) {
             TimelineService.updateCard($scope.selectedTimeline).success(function(result) {
                 $scope.loadTimelines();
@@ -268,52 +265,35 @@ angular.module('navigatorGlassProjectApp')
     };
 
 
-    $scope.messageType = '';
+    
 
-    $scope.showError = function() {
-        $scope.messageType = 'warning';
-        $scope.showMessage('There was an error with your request');
+    $scope.showError = function() {        
+        $scope.showMessage('warning', 'There was an error with your request');
     };
 
-    $scope.showTimeout = function() {
-        $scope.messageType = 'warning';
-        $scope.showMessage('The request timed out');
+    $scope.showTimeout = function() {        
+        $scope.showMessage('warning', 'The request timed out');
     };
 
-    $scope.showForbidden = function() {
-        $scope.messageType = 'warning';
-        $scope.showMessage('You are not allowed to do this action');
+    $scope.showForbidden = function() {        
+        $scope.showMessage('warning', 'You are not allowed to do this action');
     };
 
-    $scope.showDeleteMessage = function() {
-        $scope.messageType = 'success';
-        $scope.showMessage('The Item has been deleted');
+    $scope.showDeleteMessage = function() {        
+        $scope.showMessage('success', 'The Item has been deleted');
     };
 
-    $scope.showInsertMessage = function() {
-        $scope.messageType = 'success';
-        $scope.showMessage('The Template has been saved');
+    $scope.showInsertMessage = function() {        
+        $scope.showMessage('success', 'The Template has been saved');
     };
 
-    $scope.showUpdateMessage = function() {
-        $scope.messageType = 'success';
-        $scope.showMessage('The Timeline has been updated');
+    $scope.showUpdateMessage = function() {        
+        $scope.showMessage('success', 'The Timeline has been updated');
     };
 
-    $scope.showMessage = function(message) {
-        $scope.statusMessage = message;
-        $scope.hasStatus = true;
-
-        if ($scope.timeout) {
-            window.clearTimeout($scope.timeout);
-        }
-
-        $scope.timeout = setTimeout(function() {
-            $scope.hasStatus = false;
-            $scope.$apply();
-
-            $scope.timeout = null;
-        }, 5000);
+    
+    $scope.showMessage = function(type, message) {
+        toaster.pop(type, '', message, 5000);
     };
 
     /*
@@ -337,8 +317,7 @@ angular.module('navigatorGlassProjectApp')
                 if ($scope.previewTemplate) {
                     $scope.previewTemplate();
                 }            
-            }
-
+            }            
             $scope.loadingTimeline = false;
         });
     };

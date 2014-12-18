@@ -10,6 +10,7 @@
 @charset "UTF-8";
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @import url(../../bower_components/angular-block-ui/dist/angular-block-ui.css);
+@import url(../../bower_components/angularjs-toaster/toaster.css);
 @media print {
   *,
   *:before,
@@ -11249,17 +11250,6 @@ div.small {
 .menuContent .list-menu span {
   width: 200px;
   display: inline-block;
-}
-
-.message-container {
-  height: 50px;
-}
-
-.statusBar {
-  width: 592px;
-  height: 30px;
-  padding-top: 5px !important;
-  margin: 10px 20px 10px 16px;
 }
 
 /*.ace_editor { height: 200px; }*/
