@@ -7,7 +7,7 @@ angular.module('navigatorGlassProjectApp')
     return{
         
         getTimeline: function() {
-            return HttpService.mockHandle('GET','/timeline');
+            return HttpService.handle('GET','/timeline');
         },
 
         getAlbums: function() {
@@ -15,15 +15,15 @@ angular.module('navigatorGlassProjectApp')
         },
 
         updateCard: function(card) {
-            return HttpService.mockHandle('PUT', '/timeline', card);
+            return HttpService.handle('PUT', '/timeline', card);
         },
 
         deleteCard: function(id) {
-            return HttpService.mockHandle('DELETE', '/timeline/' + id);
+            return HHttpService.handle('DELETE', '/timeline/' + id);
         },
 
         createCard: function(card) {
-            return HttpService.mockHandle('POST', '/timeline', card);
+            return HttpService.handle('POST', '/timeline', card);
         }
     };
 });
