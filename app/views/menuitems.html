@@ -4,7 +4,7 @@
 		<div class="list-menu">
 			<div ng-repeat="menu in menuItems | filter: {action: '!CUSTOM'}">			
 				<span>{{menu.displayName}}</span>
-				<input type="checkbox" ng-model="menu.selected" ng-click="onSelectMenuProperty(menu)"/>				
+				<input type="checkbox" ng-checked="menuIsSelected(menu)" ng-click="onSelectMenuProperty(menu)"/>				
 			</div>
 		</div>		
 	</div>
@@ -13,7 +13,7 @@
 		<div class="list-menu">
 			<div ng-repeat="menu in menuItems | filter: {action: 'CUSTOM'}">
 				<span>{{menu.displayName}}</span>
-				<input type="checkbox" ng-model="menu.selected" ng-click="onSelectMenuProperty(menu)"/>
+				<input type="checkbox" ng-checked="menuIsSelected(menu)" ng-click="onSelectMenuProperty(menu)"/>
 			</div>
 		</div>
 	</div>    

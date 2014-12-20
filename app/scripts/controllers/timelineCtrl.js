@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('navigatorGlassProjectApp')
-.controller('TimelineCtrl',function(HttpService, $sce, $scope, TimelineService, LocationService, MenuItemService, toaster) {
+.controller('TimelineCtrl',function(HttpService, $sce, $scope, TimelineService, LocationService, MenuItemService, toaster, $filter) {
     var allowedJsonKeyProperty = ['id', 'etag', 'text', 'html', 'created', 'updated', 'menuItems', 'speakableText'];
         
     $scope.modes = ['Scheme', 'XML', 'Javascript', 'Html'];
@@ -243,12 +243,37 @@ angular.module('navigatorGlassProjectApp')
         });
     };
 
+
+    $scope.menuIsSelected = function(menuItem){
+        if (!angular.isArray($scope.selectedTimeline.menuItems)) {
+            return false;
+        };
+
+        var isSelected = $scope.selectedTimeline.menuItems.filter(function(item){
+            return item.displayName === menuItem.displayName;
+        }).length > 0;
+        return isSelected;
+    };
+
     $scope.onSelectMenuProperty = function(menuItem){
         var data = {
             mode: $scope.state,
             timelineId: $scope.selectedTimeline.id,
             menuId: menuItem.id
         };
+        
+        if ($scope.menuIsSelected(menuItem)) {            
+            angular.forEach($scope.selectedTimeline.menuItems, function(item, i){
+                if (item.displayName === menuItem.displayName) {
+                    $scope.selectedTimeline.menuItems.splice(i, 1);
+                    return;
+                };
+            });            
+        }else{
+            $scope.selectedTimeline.menuItems.push(menuItem);
+        };
+
+        
         
         MenuItemService.postMenuItems(data).success(function(result) {
             //Todo: tbd
