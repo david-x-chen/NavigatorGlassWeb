@@ -234,6 +234,7 @@ angular.module('navigatorGlassProjectApp')
 
     $scope.onMenuItemClick = function(menuItem){
         var data = {
+            mode: $scope.state,
             timelineId: $scope.selectedTimeline.id,
             menuId: menuItem.id
         };
