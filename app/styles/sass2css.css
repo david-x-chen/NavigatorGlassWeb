@@ -11356,11 +11356,6 @@ div.small {
 }
 
 /*Button*/
-.map-buttonbar {
-  margin: 0px 15px;
-  padding-bottom: 15px;
-}
-
 .map-button {
   cursor: pointer;
   margin-left: 0;
@@ -11383,6 +11378,10 @@ div.small {
   user-select: none;
 }
 
+.map-buttonbar {
+  margin: 0px 15px;
+  padding-bottom: 15px;
+}
 .map-buttonbar .map-button, .map-buttonbar .map-combobutton, .map-buttonbar .map-expandbutton {
   margin: 0;
   margin-left: 16px;
@@ -11393,6 +11392,14 @@ div.small {
 }
 .map-buttonbar .map-button:first-child {
   margin-left: 0;
+}
+.map-buttonbar .config {
+  position: relative;
+  float: right;
+}
+.map-buttonbar .config .glyphicon-cog {
+  font-size: 16px;
+  vertical-align: middle;
 }
 
 .map-button-submit {
@@ -11426,10 +11433,7 @@ div.small {
 /*Subscription*/
 #subscription_container {
   margin-left: 2px;
-  width: 99%;
   height: 200px;
-  overflow-x: scroll;
-  overflow-y: hidden;
   white-space: nowrap;
   padding-top: 20px;
   color: #000000;
