@@ -19,7 +19,7 @@ angular.module('navigatorGlassProjectApp')
         },
 
         deleteCard: function(id) {
-            return HHttpService.handle('DELETE', '/timeline/' + id);
+            return HttpService.handle('DELETE', '/timeline/' + id);
         },
 
         createCard: function(card) {
