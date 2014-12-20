@@ -15,7 +15,8 @@ var app = angular
   'LocalStorageModule',
   'ngCookies',
   'navigatorGlassMock',
-  'blockUI'
+  'blockUI',
+  'toaster'
   ]);
 app.config(function ($routeProvider) {
   $routeProvider

@@ -1,12 +1,5 @@
 <div ng-include src="' views/header.html'"></div>
-<div class="row">
-    <div class="row message-container">
-        <div ng-show="hasStatus" ng-bind="statusMessage" class="statusBar alert alert-{{messageType}}">
-            The Timeline is currently empty
-        </div>
-
-    </div>
-        
+<div class="row">            
     <div class="row main-container">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -110,3 +103,4 @@
         </div>
     </div>
 </div>
+<toaster-container></toaster-container>

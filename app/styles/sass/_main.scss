@@ -339,6 +339,11 @@ div.small {
 
 .propertiesContent {
   margin: 29px 0 0;
+
+  .tab-content{
+    height: 215px; 
+    margin: 10px;
+  }
 }
 
 .propSize {
@@ -368,17 +373,18 @@ div.small {
   border: none;
   margin: 10px;
   min-height: 200px;
-}
 
-.message-container {
-  height: 50px;
-}
+  .list-menu{
+    height: 170px;
+    -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
 
-.statusBar {
-  width: 592px;
-  height: 30px;
-  padding-top: 5px !important;
-  margin: 10px 20px 10px 16px ;
+      span {  
+        width: 200px;
+        display: inline-block;
+      }
+  }
 }
 
 /*.ace_editor { height: 200px; }*/
@@ -469,7 +475,7 @@ div.small {
 
 .speakable-text {
   width: 100%;
-  height: 300px;
+  min-height: 200px;
 }
 
 .location-scroll {
@@ -538,10 +544,13 @@ div.small {
 .map-button-submit {
   border: 1px solid #3079ed;
   color: $white;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#4d90fe), to(#4787ed));
-  background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
-  background-image: -o-linear-gradient(top, #4d90fe, #4787ed);
-  background-image: linear-gradient(top, #4d90fe, #4787ed);
+  background-color: #4d90fe;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#4787ed));
+  background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+  background-image: -moz-linear-gradient(top,#4d90fe,#4787ed);
+  background-image: -ms-linear-gradient(top,#4d90fe,#4787ed);
+  background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
+  background-image: linear-gradient(top,#4d90fe,#4787ed);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe',EndColorStr='#4787ed');
 }
 
@@ -559,4 +568,103 @@ div.small {
   background: url('../images/728.gif') transparent;
   width: 64px;
   height: 68px;
+}
+
+/*Subscription*/
+#subscription_container {
+  margin-left: 2px;
+  width: 99%;
+  height: 200px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-top: 20px;
+  color: $black;  
+  font-size: 14px;    
+  font-weight: normal;
+
+  .collection {
+    width: 80px;
+    display: inline-block;
+    text-transform: capitalize;
+  }
+
+  .operation-item {
+    display: inline;
+    font-style: italic;
+    text-transform: capitalize;
+  }
+
+  .operation-key {
+    margin-right: 10px;
+  }
+
+  .btn{
+    margin-top: 20px;
+  }
+
+}
+
+/*Custom menu*/
+.scroll-bar-box{
+    width: 100%;
+    height:100%;
+    position:relative;
+    display:inline-block;
+
+    border-top:1px solid #ebebeb; /*FOR IE*/
+    border-bottom:1px solid #ebebeb; /*FOR IE*/
+    border-top:1px solid rgba(0, 0, 0, 0.1);
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+
+    -webkit-box-sizing:border-box;
+    border: 0;
+    overflow: hidden;
+    margin-top: -40px;    
+
+    > .scroll-bar-inner {
+      height: 92px;
+    }
+
+    #menu-item-list {
+      min-width: 200px;
+      width: 100%;
+      overflow-y: hidden;
+      height: 82px;
+      margin: 0 -10px -10px 0;
+    }
+
+    .scroll-bar-inner {
+        height: 100%;
+        overflow: auto;
+        padding: 5px 5px 15px 0;
+    }
+    .menu-item {
+        width: 128px;
+        height: 72px;
+        overflow: hidden;
+        display: inline-table;
+        background-color: black;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .menu-item-value {
+        padding: 27px 0;
+        min-height: 85px;
+    }
+    .menu-item:first-child {
+        margin-left: 0px;
+    }
+
+
+    .menu-item-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .menu-item-display-name {
+        font-size: 14px;
+        display: inline;
+        color: white;
+    }
 }
