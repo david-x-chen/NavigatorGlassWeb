@@ -73,6 +73,49 @@ $fa-font-path: '../../bower_components/font-awesome/fonts/';
 	
 
 	// ============================================================================================ 
+	// Foundation 5.3.3
+	// We link Foundation components from here to control which ones are used 
+	// without touching the original package
+
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/grid.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/accordion.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/alert-boxes.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/block-grid.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/breadcrumbs.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/button-groups.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/buttons.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/clearing.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/dropdown.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/dropdown-buttons.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/flex-video.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/forms.scss'
+	// , 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/icon-bar.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/inline-lists.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/joyride.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/keystrokes.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/labels.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/magellan.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/orbit.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/pagination.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/panels.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/pricing-tables.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/progress-bars.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/range-slider.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/reveal.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/side-nav.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/split-buttons.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/sub-nav.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/switches.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/tables.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/tabs.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/thumbs.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/tooltips.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/top-bar.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/type.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/offcanvas.scss'
+	, 'node_modules/zurb-foundation-scss-npm/scss/foundation/components/visibility.scss'
+	
+	// ============================================================================================ 
 	// Font Awesome
 		
 	, 'bower_components/font-awesome/scss/variables.scss'
@@ -91,8 +134,10 @@ $fa-font-path: '../../bower_components/font-awesome/fonts/';
 	// ============================================================================================ 
 	// Angular Block UI
 	, '../../bower_components/angular-block-ui/dist/angular-block-ui.css'		
+	
 	// AngularJS-Toaster
 	, '../../bower_components/angularjs-toaster/toaster.css'
+	
 	// ============================================================================================ 
 	// App components
 		
