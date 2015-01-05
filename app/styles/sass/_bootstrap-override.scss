@@ -109,7 +109,13 @@
   background-color: #4d90fe;
   color: white;
 
-  .navbar-brand, 
+  .navbar-brand {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 20px 15px 15px;
+  } 
+  
   .navbar-nav > li > a {
     color: white;
   }

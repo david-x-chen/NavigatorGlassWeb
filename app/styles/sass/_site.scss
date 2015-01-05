@@ -1,28 +1,16 @@
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  color: inherit;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
   padding-top: 50px;
   padding-bottom: 20px;
   margin-bottom: 60px;
-
-  &.full {
-    width: 640px;
-    height: 360px;
-    overflow: hidden;
-  }
 }
 
+a, button {
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    transition: all .25s ease-in-out;
+  }
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 
