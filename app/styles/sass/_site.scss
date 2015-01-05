@@ -23,9 +23,6 @@ body {
   }
 }
 
-// 
-// ADDED FROM SITE-2
-
 /* Sticky footer styles
 -------------------------------------------------- */
 
@@ -70,9 +67,6 @@ body {
   }
 }
 
-// ADDED FROM SITE-2  
-// 
-
 /*Custom style*/
 .saveBtn {
   margin-bottom: 20px;
@@ -97,17 +91,6 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.navbar-inverse {
-  border-color: #007196;
-  background-color: #008cba;
-  color: white;
-
-  .navbar-brand, 
-  .navbar-nav > li > a {
-    color: white;
-  }
 }
 
 .page-header {

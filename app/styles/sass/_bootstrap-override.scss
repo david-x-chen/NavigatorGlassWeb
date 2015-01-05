@@ -1,23 +1,26 @@
-.nav-tabs > li {
-  > a {
-    min-width: 54px;
-    height: 27px;
-    padding: 0px 8px;
-    border: none;
-    border-radius: 0px 0px;
-    color: $steel;
-    text-align: center;
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 27px;
+.nav-tabs {
+  > li {
+    margin-bottom: -1px;
 
-    &:hover {
-      background: transparent;
+    &.active {
+      > a {
+        color: $jet;
+      }
     }
-  }
 
-  &.active > a {
-    color: $jet;
+    > a {
+      cursor: pointer;
+      padding: 0px 8px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      color: $steel;
+      line-height: 2;
+
+      &:hover {
+        background: transparent;
+        border: 1px solid transparent;
+      }
+    }
   }
 }
 
@@ -26,9 +29,10 @@
 }
 
 .form-control {
-  font-size: 12px;
-  height: 24px;
-  padding: 0px 5px;
+  font-size: .75em;
+  padding: 0 .5em;
+  border-radius: 1px;
+  height: 2.5em;
 }
 
 .time-picker {
@@ -98,6 +102,17 @@
 
 .form-group {
   margin-bottom: 2px;
+}
+
+.navbar-inverse {
+  border-color: #4d90fe;
+  background-color: #4d90fe;
+  color: white;
+
+  .navbar-brand, 
+  .navbar-nav > li > a {
+    color: white;
+  }
 }
 
 @media (min-width: $screen-sm-min) {}

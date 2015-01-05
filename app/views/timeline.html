@@ -8,13 +8,13 @@
                     <div class="map-buttonbar">
                         <div id="api-actions" style="display: block;">
                             <button class="map-button app-bar-button" id="reload-button" ng-click="loadTimelines()">
-                                <img src="/images/reload.png" width="21" height="21" alt="Reload" />        
+                                <span class="glyphicon glyphicon-repeat" aria-hidden="true" alt="Reload"></span>
                             </button>
 
                             <button 
                                 class="map-button app-bar-button" id="delete-button" style="display: inline;"
                                 ng-show="isTimeline()" ng-click="onDelete()">                   
-                                <img src="/images/trash.png" width="21" height="21" alt="Delete">        
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true" alt="Delete"></span>
                             </button>
 
                             <button id="send-button" style="display: inline;"
