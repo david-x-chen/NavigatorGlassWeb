@@ -1,23 +1,25 @@
 'use strict';
 
-var app = angular
-.module('navigatorGlassProjectApp', [
-  'ngAnimate',
-  'ngCookies',
-  'ngResource',
-  'ngRoute',
-  'ngSanitize',
-  'ngTouch',
-  'bootstrap.tabset',
-  'ui.ace',
-  'ui.bootstrap',
-  'config',
-  'LocalStorageModule',
-  'ngCookies',
-  'navigatorGlassMock',
-  'blockUI',
-  'toaster'
+var app = angular.module('navigatorGlassProjectApp', 
+  [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch',
+    'bootstrap.tabset',
+    'ui.ace',
+    'ui.bootstrap',
+    'config',
+    'LocalStorageModule',
+    'ngCookies',
+    'navigatorGlassMock',
+    'blockUI',
+    'toaster',
+    'mm.foundation'
   ]);
+
 app.config(function ($routeProvider) {
   $routeProvider
   .when('/', {
@@ -39,7 +41,6 @@ app.config(function ($routeProvider) {
   .otherwise({
     redirectTo: '/'
   });
-
 });
 
 app.config(function (blockUIConfig) {
@@ -53,3 +54,5 @@ app.config(function (blockUIConfig) {
 app.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);
+
+
