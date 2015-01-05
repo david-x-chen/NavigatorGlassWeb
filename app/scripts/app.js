@@ -17,7 +17,6 @@ var app = angular.module('navigatorGlassProjectApp',
     'navigatorGlassMock',
     'blockUI',
     'toaster',
-    'mm.foundation'
   ]);
 
 app.config(function ($routeProvider) {
